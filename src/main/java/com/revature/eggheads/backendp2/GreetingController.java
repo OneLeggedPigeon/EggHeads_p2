@@ -18,8 +18,8 @@ public class GreetingController {
     }
 
     // this is just so the pipeline health check stops showing as red
-    @GetMapping("/")
-    public Greeting greetingHome(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    @GetMapping("/healthcheck")
+    public String healthCheck(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return "Feelin' Fine";
     }
 }
