@@ -1,13 +1,13 @@
-package com.revature.eggheads.backendp2;
+package com.revature.egghead;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EggheadsBackendP2Application {
+public class EggheadApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EggheadsBackendP2Application.class, args);
+		SpringApplication.run(EggheadApplication.class, args);
 	}
 
 }

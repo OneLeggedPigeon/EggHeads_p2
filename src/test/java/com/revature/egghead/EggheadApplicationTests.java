@@ -1,10 +1,10 @@
-package com.revature.eggheads.backendp2;
+package com.revature.egghead;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EggheadsBackendP2ApplicationTests {
+class EggheadApplicationTests {
 
 	@Test
 	void contextLoads() {
