@@ -1,4 +1,4 @@
-package com.revature.eggheads.EggheadsFrontend_p2;
+package com.revature.eggheads.frontendp2;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

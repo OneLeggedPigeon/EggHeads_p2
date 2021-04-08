@@ -1,4 +1,4 @@
-package com.revature.eggheads.EggheadsFrontend_p2;
+package com.revature.eggheads.frontendp2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
