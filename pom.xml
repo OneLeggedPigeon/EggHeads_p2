@@ -11,7 +11,7 @@
 	<groupId>com.revature.eggheads</groupId>
 	<artifactId>Eggheads-Backend_p2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+
 	<name>Eggheads-Backend_p2</name>
 	<description>Eggheads Project 2 Backend</description>
 	<properties>
