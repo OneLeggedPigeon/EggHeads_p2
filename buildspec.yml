@@ -10,10 +10,10 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - mvn war:war
+      - mvn clean package
   post_build:
     commands:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/EggHeads-Backend_p2-0.1.war
+    - target/Eggheads-Backend_p2-0.0.1-SNAPSHOT.war
