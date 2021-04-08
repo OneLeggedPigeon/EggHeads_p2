@@ -1,4 +1,4 @@
-package com.revature.eggheads.backendp2.services;
+package com.revature.eggheads.backendp2.service;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
