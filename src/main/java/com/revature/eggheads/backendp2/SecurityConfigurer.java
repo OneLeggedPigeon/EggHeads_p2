@@ -1,6 +1,6 @@
 package com.revature.eggheads.backendp2;
 
-import com.revature.eggheads.backendp2.services.MyUserDetailsService;
+import com.revature.eggheads.backendp2.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
