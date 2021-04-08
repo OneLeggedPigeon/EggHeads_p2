@@ -16,4 +16,4 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/Eggheads-Frontend_p2-0.0.1-SNAPSHOT.war
+    - target/Eggheads-Frontend_p2-0.0.1-SNAPSHOT.jar
