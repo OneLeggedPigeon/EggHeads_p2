@@ -1,2 +1,2 @@
 # EggHeads_p2 Backend
-Project 1.5 - Decoupled Web Application, Front End - Revature Enterprise Java Batch 2102
+Project 2 - Decoupled Web Application, Backend - Revature Enterprise Java Batch 2102
