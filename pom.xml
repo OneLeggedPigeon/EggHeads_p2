@@ -8,10 +8,10 @@
 		<version>2.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.revature</groupId>
-	<artifactId>egghead</artifactId>
+	<groupId>com.revature.eggheads</groupId>
+	<artifactId>Eggheads-Backend_p2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>egghead</name>
+	<name>Eggheads-Backend_p2</name>
 	<description>Backend APIs for the EggHead application.</description>
 	<properties>
 		<java.version>1.8</java.version>
