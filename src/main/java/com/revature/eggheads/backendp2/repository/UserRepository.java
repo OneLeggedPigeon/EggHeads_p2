@@ -1,6 +1,6 @@
-package com.revature.egghead.repository;
+package com.revature.eggheads.backendp2.repository;
 
-import com.revature.egghead.model.User;
+import com.revature.eggheads.backendp2.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer> {

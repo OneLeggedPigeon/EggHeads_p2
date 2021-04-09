@@ -1,4 +1,4 @@
-package com.revature.egghead.model;
+package com.revature.eggheads.backendp2.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

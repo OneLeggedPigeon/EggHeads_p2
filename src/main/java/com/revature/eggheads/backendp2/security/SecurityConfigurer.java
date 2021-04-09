@@ -1,7 +1,7 @@
-package com.revature.egghead.security;
+package com.revature.eggheads.backendp2.security;
 
-import com.revature.egghead.filter.JwtRequestFilter;
-import com.revature.egghead.service.MyUserDetailsService;
+import com.revature.eggheads.backendp2.filter.JwtRequestFilter;
+import com.revature.eggheads.backendp2.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;

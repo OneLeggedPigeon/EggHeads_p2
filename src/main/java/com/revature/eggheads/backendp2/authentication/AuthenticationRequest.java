@@ -1,4 +1,4 @@
-package com.revature.egghead.authentication;
+package com.revature.eggheads.backendp2.authentication;
 
 
 import lombok.AllArgsConstructor;

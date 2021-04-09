@@ -1,9 +1,9 @@
-package com.revature.egghead.controller;
+package com.revature.eggheads.backendp2.controller;
 
-import com.revature.egghead.authentication.AuthenticationRequest;
-import com.revature.egghead.authentication.AuthenticationResponse;
-import com.revature.egghead.service.MyUserDetailsService;
-import com.revature.egghead.util.JwtUtil;
+import com.revature.eggheads.backendp2.authentication.AuthenticationRequest;
+import com.revature.eggheads.backendp2.authentication.AuthenticationResponse;
+import com.revature.eggheads.backendp2.service.MyUserDetailsService;
+import com.revature.eggheads.backendp2.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

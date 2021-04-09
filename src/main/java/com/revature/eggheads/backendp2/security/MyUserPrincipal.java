@@ -1,6 +1,6 @@
-package com.revature.egghead.security;
+package com.revature.eggheads.backendp2.security;
 
-import com.revature.egghead.model.User;
+import com.revature.eggheads.backendp2.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

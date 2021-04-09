@@ -1,7 +1,7 @@
-package com.revature.egghead.controller;
+package com.revature.eggheads.backendp2.controller;
 
-import com.revature.egghead.model.User;
-import com.revature.egghead.repository.UserRepository;
+import com.revature.eggheads.backendp2.model.User;
+import com.revature.eggheads.backendp2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
