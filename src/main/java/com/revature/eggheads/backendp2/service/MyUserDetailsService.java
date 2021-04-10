@@ -1,8 +1,8 @@
-package com.revature.egghead.service;
+package com.revature.eggheads.backendp2.service;
 
-import com.revature.egghead.model.User;
-import com.revature.egghead.repository.UserRepository;
-import com.revature.egghead.security.MyUserPrincipal;
+import com.revature.eggheads.backendp2.model.User;
+import com.revature.eggheads.backendp2.repository.UserRepository;
+import com.revature.eggheads.backendp2.security.MyUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.core.userdetails.UserDetails;

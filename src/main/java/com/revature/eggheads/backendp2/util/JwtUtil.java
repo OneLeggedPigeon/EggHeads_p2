@@ -1,4 +1,4 @@
-package com.revature.egghead.util;
+package com.revature.eggheads.backendp2.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

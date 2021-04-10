@@ -1,8 +1,7 @@
-package com.revature.egghead.filter;
+package com.revature.eggheads.backendp2.filter;
 
-import com.revature.egghead.service.MyUserDetailsService;
-import com.revature.egghead.util.JwtUtil;
-import lombok.extern.apachecommons.CommonsLog;
+import com.revature.eggheads.backendp2.service.MyUserDetailsService;
+import com.revature.eggheads.backendp2.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
