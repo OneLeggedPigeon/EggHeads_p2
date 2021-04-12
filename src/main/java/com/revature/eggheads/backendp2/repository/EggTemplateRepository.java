@@ -19,8 +19,4 @@ public interface EggTemplateRepository extends JpaRepository<EggTemplate, Intege
     List<EggTemplate> findByIncubationPeriodLessThanEqual(int period);
 
     List<EggTemplate> findByIncubationPeriod(int parseInt);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 852eb272ae701c897aa900eb22618d6e26216b86
