@@ -1,14 +1,8 @@
 package com.revature.eggheads.frontendp2.util;
 
 import com.revature.eggheads.frontendp2.exception.BackendParameterOutOfBoundsException;
-import org.springframework.http.MediaType;
-
-import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 
 /**
@@ -53,22 +47,8 @@ public final class EggImageUtil {
         //calculate arc values
         int arcWidth = height * wRatio / hRatio;
         int arcHeightBase = height * bRatio / hRatio;
-        int arcHeightTop = height * (bRatio - hRatio) / hRatio;
+        int arcHeightTop = height * (hRatio - bRatio) / hRatio;
         Color color = new Color(red, green, blue);
-
-        //
-        System.out.println();
-        System.out.println("imgWidth "+imgWidth);
-        System.out.println("maxWidth "+maxWidth);
-        System.out.println("imgHeight "+imgHeight);
-        System.out.println("maxHeight "+maxHeight);
-        System.out.println("size "+size);
-        System.out.println("height "+height);
-        System.out.println("arcHeightBase "+arcHeightBase);
-        System.out.println("arcHeightTop "+arcHeightTop);
-        System.out.println("color "+color.toString());
-        System.out.println("MARGIN "+MARGIN);
-        //
 
         BufferedImage bi = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = bi.createGraphics();
@@ -81,6 +61,18 @@ public final class EggImageUtil {
         int topY = (maxHeight - height) + MARGIN;
 
         //
+        System.out.println();
+        System.out.println("imgWidth "+imgWidth);
+        System.out.println("maxWidth "+maxWidth);
+        System.out.println("imgHeight "+imgHeight);
+        System.out.println("maxHeight "+maxHeight);
+        System.out.println("size "+size);
+        System.out.println("height "+height);
+        System.out.println("arcWidth "+arcWidth);
+        System.out.println("arcHeightBase "+arcHeightBase);
+        System.out.println("arcHeightTop "+arcHeightTop);
+        System.out.println("color "+color.toString());
+        System.out.println("MARGIN "+MARGIN);
         System.out.println("bothX "+bothX);
         System.out.println("baseY "+baseY);
         System.out.println("topY" +topY);

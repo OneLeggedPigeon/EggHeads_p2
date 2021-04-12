@@ -32,25 +32,46 @@ public class EggImageController {
     ServletContext context;
 
     /**
-     *
-     * @param imgHeight should usually one of the static final dimension Strings, like EggImageUtil.SMALL_HEIGHT
-     * @param imgWidth should usually one of the static final dimension Strings, like EggImageUtil.LARGE_WIDTH
-     * @param size int 0-100 as String
-     * @param red int 0-255 as String
-     * @param green int 0-255 as String
-     * @param blue int 0-255 as String
+     * All Parameters are read from the request and parsed into Strings
+     * @param imgHeight Image Height in pixels, defaults to EggImageUtil.HEIGHT
+     * @param imgWidth Image Width in pixels, defaults to EggImageUtil.WIDTH
+     * @param size 0-100
+     * @param red 0-255
+     * @param green 0-255
+     * @param blue 0-255
      * @param response the httpResponse that the image will be written into
      * @throws IOException
      * @throws ParameterOutOfBoundsException
      */
     @GetMapping
-    public void generateImage(@RequestParam(name = "height", defaultValue = EggImageUtil.HEIGHT) String imgHeight,
+    public void mediumImage(@RequestParam(name = "height", defaultValue = EggImageUtil.HEIGHT) String imgHeight,
                               @RequestParam(name = "width", defaultValue = EggImageUtil.WIDTH) String imgWidth,
                               @RequestParam(name = "size", required = false) String size,
                               @RequestParam(name = "red", required = false) String red,
                               @RequestParam(name = "green", required = false) String green,
                               @RequestParam(name = "blue", required = false) String blue,
                               HttpServletResponse response) throws IOException {
+        generateImage(imgHeight, imgWidth, size, red, green, blue, response);
+    }
+    @GetMapping("/small")
+    public void smallImage(@RequestParam(name = "size", required = false) String size,
+                            @RequestParam(name = "red", required = false) String red,
+                            @RequestParam(name = "green", required = false) String green,
+                            @RequestParam(name = "blue", required = false) String blue,
+                            HttpServletResponse response) throws IOException {
+        generateImage(EggImageUtil.SMALL_HEIGHT, EggImageUtil.SMALL_WIDTH, size, red, green, blue, response);
+    }
+    @GetMapping("/large")
+    public void largeImage(@RequestParam(name = "size", required = false) String size,
+                           @RequestParam(name = "red", required = false) String red,
+                           @RequestParam(name = "green", required = false) String green,
+                           @RequestParam(name = "blue", required = false) String blue,
+                           HttpServletResponse response) throws IOException {
+        generateImage(EggImageUtil.LARGE_HEIGHT, EggImageUtil.LARGE_WIDTH, size, red, green, blue, response);
+    }
+
+
+    private void generateImage(String imgHeight, String imgWidth, String size, String red, String green, String blue, HttpServletResponse response) throws IOException {
         response.setContentType(MediaType.IMAGE_JPEG_VALUE);
         ServletOutputStream outStream = response.getOutputStream();
         BufferedOutputStream bout = new BufferedOutputStream(outStream);
@@ -66,7 +87,7 @@ public class EggImageController {
                 throw new ParameterNotIncludedException("Insufficient parameters have been included for dynamic egg image creation");
             }
 
-            bufferedImage = EggImageUtil.generateEggImage(imgWidth, imgHeight, size,red,green,blue);
+            bufferedImage = EggImageUtil.generateEggImage(imgWidth, imgHeight, size, red, green, blue);
 
         } catch (ParameterNotIncludedException e){
             bufferedImage = EggImageUtil.generateErrorEgg(EggImageUtil.SMALL_WIDTH, EggImageUtil.SMALL_HEIGHT, Color.BLACK);
