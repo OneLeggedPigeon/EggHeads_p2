@@ -9,4 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Egg {
     private int size;
+    private int red;
+    private int blue;
+    private int green;
 }
