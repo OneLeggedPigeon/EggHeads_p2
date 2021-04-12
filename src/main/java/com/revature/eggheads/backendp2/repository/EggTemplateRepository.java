@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface EggTemplateRepository extends JpaRepository<EggTemplate, Integer> {
 
-    @Query(value = "FROM EggTemplate WHERE animalType = ?1")
+    //@Query(value = "FROM EggTemplate WHERE animalType = ?1")
     List<EggTemplate> findByAnimalType(String str);
 
 //    @Query(value = "SELECT * FROM egg_template et WHERE et.animal_type = :str", nativeQuery = true)
@@ -17,4 +17,6 @@ public interface EggTemplateRepository extends JpaRepository<EggTemplate, Intege
 
     @Query(value = "SELECT * FROM egg_template WHERE incubation_period <= ?1", nativeQuery = true)
     List<EggTemplate> findByIncubationPeriodLessThanEqual(int period);
+
+    List<EggTemplate> findByIncubationPeriod(int parseInt);
 }
