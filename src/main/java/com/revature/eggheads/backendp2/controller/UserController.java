@@ -14,6 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,13 +28,15 @@ public class UserController {
     private AuthenticationManager authenticationManager;
     private MyUserDetailsService userDetailsService;
     private JwtUtil jwtTokenUtil;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserController(UserRepository repo, AuthenticationManager am, MyUserDetailsService muds, JwtUtil jwtu ){
+    public UserController(UserRepository repo, AuthenticationManager am, MyUserDetailsService muds, JwtUtil jwtu, PasswordEncoder pe ){
         this.repo = repo;
         this.authenticationManager = am;
         this.userDetailsService = muds;
         this.jwtTokenUtil = jwtu;
+        this.passwordEncoder = pe;
     }
 
     @GetMapping
@@ -46,11 +49,14 @@ public class UserController {
         return repo.findById(Integer.valueOf(id)).orElse(null);
     }
 
-    @PostMapping
-    public @ResponseBody User save(@RequestBody User u){return repo.save(u);}
 
     @PostMapping("/create")
-    public @ResponseBody User newUser(@RequestBody User u){return repo.save(u);}
+    public @ResponseBody User newUser(@RequestBody User u){
+        User user = new User();
+        user.setUsername(u.getUsername());
+        user.setPassword(passwordEncoder.encode(u.getPassword()));
+        return repo.save(user);
+    }
 
 
     @DeleteMapping("/{id}")
