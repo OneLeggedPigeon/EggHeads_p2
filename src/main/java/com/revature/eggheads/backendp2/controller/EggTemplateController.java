@@ -21,7 +21,7 @@ public class EggTemplateController {
         this.repo = repo;
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping
     public @ResponseBody EggTemplate save(@RequestBody EggTemplate et){return repo.save(et);}
 
     @GetMapping
@@ -32,12 +32,18 @@ public class EggTemplateController {
     public @ResponseBody
     EggTemplate getEggTemplate(@PathVariable("id") String id){return repo.findById (Integer.valueOf (id)).orElse (null);}
 
-    @GetMapping(value = "/animal_type")
-    public @ResponseBody List<EggTemplate> getEggTemplateByAnimalType(@RequestBody String str){return repo.findByAnimalType(str);}
+    @GetMapping(value = "/animal_type/{type}")
+    public @ResponseBody List<EggTemplate> getEggTemplateByAnimalType(@PathVariable("type") String type){return repo.findByAnimalType(type);}
 
-    @GetMapping(value = "/incubation_period_less_than_or_equal_to")
+    @GetMapping(value = "/incubation_period/{period}")
     public @ResponseBody
-    List<EggTemplate> getEggTemplateListByIncubationPeriodWithin(@RequestBody int period){return repo.findByIncubationPeriodLessThanEqual(period);}
+    List<EggTemplate> getEggTemplateListByIncubationPeropd(@PathVariable("period") String period){
+        return repo.findByIncubationPeriod(Integer.parseInt(period));
+    }
+
+    @GetMapping(value = "/incubation_period_less_than_or_equal_to/{period}")
+    public @ResponseBody
+    List<EggTemplate> getEggTemplateListByIncubationPeriodWithin(@PathVariable("period") String period){return repo.findByIncubationPeriodLessThanEqual(Integer.parseInt(period));}
 
     @DeleteMapping("/{id}")
     public @ResponseBody
