@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/egg_template")
 public class EggTemplateController {
 
-    EggTemplateRepository repo;
+    private EggTemplateRepository repo;
 
     @Autowired
     public EggTemplateController(EggTemplateRepository repo){

@@ -3,6 +3,7 @@ package com.revature.eggheads.backendp2.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Incubator {
 
     @Id
@@ -19,6 +21,7 @@ public class Incubator {
 
     private int capacity = 10;
 
-    @OneToMany(mappedBy = "incubator")
+    @OneToMany(mappedBy = "incubator", orphanRemoval = true)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Egg> eggs;
 }

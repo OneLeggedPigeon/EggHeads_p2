@@ -1,5 +1,6 @@
 package com.revature.eggheads.backendp2.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,6 @@ public class Egg {
     private int id;
 
     private boolean isReady;
-    @CreationTimestamp
     private Timestamp timeCreated;
     private Timestamp timeComplete;
     private int startingSize;
@@ -29,7 +29,9 @@ public class Egg {
     private int blueValue;
     private String animalType;
 
+
     @ManyToOne
     @JoinColumn(name = "incubator_id")
+    @JsonIgnore
     private Incubator incubator;
 }
