@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
       username: this.username,
       password: this.password
     }
-    this.userService.loginUser(user).subscribe(token => localStorage.setItem("token", token.jwt));
+    this.userService.loginUser(user);
     //retrieve the token
     //console.log(localStorage.getItem("token"));
   }
@@ -31,6 +31,6 @@ export class LoginComponent implements OnInit {
       username: this.username,
       password: this.password
     }
-    this.userService.registerUser(user).subscribe(token => console.log(token));
+    this.userService.registerUser(user);
   }
 }
