@@ -1,5 +1,6 @@
 package com.revature.eggheads.backendp2.util;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -28,5 +29,10 @@ public final class RandomUtil {
 
     public static int getRandomIntColor(int mean, int stdDeviation, int maxDeviation){
         return getRandomInt(mean, stdDeviation, 0, 255, maxDeviation);
+    }
+
+    public static String getRandomString(List<String> strings) {
+        Random r = new Random();
+        return strings.get(r.nextInt(strings.size()));
     }
 }
