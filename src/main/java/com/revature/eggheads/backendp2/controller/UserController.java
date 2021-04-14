@@ -21,6 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    // TODO: refactor so this calls the service methods instead of the repo
     UserRepository repo;
     private AuthenticationManager authenticationManager;
     private MyUserDetailsService userDetailsService;
