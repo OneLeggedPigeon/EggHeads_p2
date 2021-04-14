@@ -5,6 +5,8 @@ import com.revature.eggheads.backendp2.model.Pet;
 import com.revature.eggheads.backendp2.model.User;
 import com.revature.eggheads.backendp2.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -30,20 +32,19 @@ public class PetController {
             pets.add(petService.getPetById(Integer.parseInt(userId), Integer.parseInt(petId)));
             return pets;
         } else {
-
+            return petService.getPetsByUserId(Integer.parseInt(userId));
         }
-        return petService.getPetsByUserId(Integer.valueOf(userId));
     }
 
     @PostMapping("/{user-id}")
     public @ResponseBody
-    Incubator addEggToIncubatorFromTemplate(@RequestParam("user-id") String userId){
-        return petService.addPetToUser(Integer.valueOf(userId));
+    Pet addPetToUser(@PathVariable("user-id") String userId, @RequestParam("egg-id") String eggId, @RequestParam("name") String name){
+        return petService.addPetToUser(Integer.parseInt(userId), Integer.parseInt(eggId), name);
     }
 
     @DeleteMapping
     public @ResponseBody
-    Incubator removeEggFromIncubator(@RequestParam("user-id") String userId, @RequestParam("egg-id") String eggId){
+    User removePetFromUser(@RequestParam("user-id") String userId, @RequestParam("egg-id") String eggId){
         return petService.removePetFromUser(Integer.valueOf(userId), Integer.valueOf(eggId));
     }
 }
