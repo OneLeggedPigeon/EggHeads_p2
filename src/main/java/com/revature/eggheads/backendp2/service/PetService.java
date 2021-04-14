@@ -1,10 +1,10 @@
 package com.revature.eggheads.backendp2.service;
 
-import com.revature.eggheads.backendp2.model.Egg;
-import com.revature.eggheads.backendp2.model.EggTemplate;
-import com.revature.eggheads.backendp2.model.Incubator;
-import com.revature.eggheads.backendp2.model.User;
+import com.revature.eggheads.backendp2.model.*;
 import com.revature.eggheads.backendp2.repository.IncubatorRepository;
+import com.revature.eggheads.backendp2.repository.PetRepository;
+import com.revature.eggheads.backendp2.repository.UserRepository;
+import com.revature.eggheads.backendp2.util.AdjectiveUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,11 +32,7 @@ public class PetService {
         if(user == null){
             return null;
         }
-        if(user.getIncubator() == null){
-            user.setIncubator(new Incubator());
-            user = userService.saveUser(user);
-        }
-        return user.getIncubator();
+        return user.getPets();
     }
 
     public Incubator getPetById(int userId, int petId) {

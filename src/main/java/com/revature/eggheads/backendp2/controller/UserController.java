@@ -22,6 +22,7 @@ import java.util.List;
 @RequestMapping("/user")
 @CrossOrigin(origins = {"http://localhost:4200", "http://egghead-p2-angular.s3-website.us-east-2.amazonaws.com"})
 public class UserController {
+    // TODO: refactor so this calls the service methods instead of the repo
     UserRepository repo;
     private AuthenticationManager authenticationManager;
     private MyUserDetailsService userDetailsService;
