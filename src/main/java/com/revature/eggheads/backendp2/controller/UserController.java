@@ -48,15 +48,6 @@ public class UserController {
     }
 
 
-    @PostMapping("/create")
-    public @ResponseBody User newUser(@RequestBody User u){
-        User user = new User();
-        user.setUsername(u.getUsername());
-        user.setPassword(passwordEncoder.encode(u.getPassword()));
-        return repo.save(user);
-    }
-
-
     @DeleteMapping("/{id}")
     public @ResponseBody
     ResponseEntity<HttpStatus> delete(@PathVariable("id") String id){
@@ -66,7 +57,24 @@ public class UserController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<?> newUser(@RequestBody User u){
+        User user = new User();
+        user.setUsername(u.getUsername());
+        user.setPassword(passwordEncoder.encode(u.getPassword()));
+        try{
+            repo.save(user);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
+        final UserDetails userDetails = userDetailsService
+                .loadUserByUsername(user.getUsername());
+
+        final String jwt = jwtTokenUtil.generateToken(userDetails);
+
+        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+    }
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
