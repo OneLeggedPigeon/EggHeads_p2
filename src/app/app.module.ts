@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TemplatesComponent } from './components/pages/templates/templates.component';
 import { IncubatorComponent } from './components/pages/incubator/incubator.component';
 import { PetsComponent } from './components/pages/pets/pets.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { PetsComponent } from './components/pages/pets/pets.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
