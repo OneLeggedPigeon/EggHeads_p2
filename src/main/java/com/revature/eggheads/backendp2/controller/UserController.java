@@ -5,6 +5,7 @@ import com.revature.eggheads.backendp2.authentication.AuthenticationResponse;
 import com.revature.eggheads.backendp2.model.User;
 import com.revature.eggheads.backendp2.repository.UserRepository;
 import com.revature.eggheads.backendp2.service.MyUserDetailsService;
+import com.revature.eggheads.backendp2.service.UserService;
 import com.revature.eggheads.backendp2.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,16 +22,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    // TODO: refactor so this calls the service methods instead of the repo
-    UserRepository repo;
+    private UserService userService;
     private AuthenticationManager authenticationManager;
     private MyUserDetailsService userDetailsService;
     private JwtUtil jwtTokenUtil;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserController(UserRepository repo, AuthenticationManager am, MyUserDetailsService muds, JwtUtil jwtu, PasswordEncoder pe ){
-        this.repo = repo;
+    public UserController(UserService us, AuthenticationManager am, MyUserDetailsService muds, JwtUtil jwtu, PasswordEncoder pe ){
+        this.userService = us;
         this.authenticationManager = am;
         this.userDetailsService = muds;
         this.jwtTokenUtil = jwtu;
@@ -39,38 +39,31 @@ public class UserController {
 
     @GetMapping
     public @ResponseBody
-    List<User> getUsers(){return repo.findAll();}
+    List<User> getUsers() { return userService.getAllUsers(); }
 
     @GetMapping("/{id}")
     public @ResponseBody
-    User getUser( @PathVariable("id") String id){
-        return repo.findById(Integer.valueOf(id)).orElse(null);
+    User getUser(@PathVariable("id") String id) {
+        return userService.getUserById(Integer.parseInt(id));
     }
 
-
     @PostMapping("/create")
-    public @ResponseBody User newUser(@RequestBody User u){
+    public @ResponseBody User newUser(@RequestBody User u) {
         User user = new User();
         user.setUsername(u.getUsername());
         user.setPassword(passwordEncoder.encode(u.getPassword()));
-        return repo.save(user);
+        return userService.saveUser(user);
     }
-
 
     @DeleteMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<HttpStatus> delete(@PathVariable("id") String id){
-        repo.findById(Integer.valueOf(id)).ifPresent(
-                u-> repo.delete(u)
-        );
+    ResponseEntity<HttpStatus> delete(@PathVariable("id") String id) {
+        userService.deleteUser(getUser(id));
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-
-
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
