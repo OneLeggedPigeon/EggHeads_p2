@@ -33,10 +33,12 @@ public class AdjectiveUtil {
                 "perturbed",
                 "listless",
                 "vibrating",
+                "predatory",
                 "endothermic",
                 "unkempt",
                 "constantly pacing",
                 "twitchy",
+                "elongated",
                 "ungainly",
                 "gainly",
                 "handsome",
@@ -63,6 +65,7 @@ public class AdjectiveUtil {
                 "passionate",
                 "constantly back flipping",
                 "meticulous",
+                "screaming",
                 "serious",
                 "honey-glazed",
                 "disguised",
@@ -76,7 +79,9 @@ public class AdjectiveUtil {
                 "invisible",
                 "murderous",
                 "amicable",
-                "pithy"
+                "pithy",
+                "introspective",
+                "ready for anything"
         ); // I may have had too much fun with this
         return RandomUtil.getRandomString(adjectives);
     }
