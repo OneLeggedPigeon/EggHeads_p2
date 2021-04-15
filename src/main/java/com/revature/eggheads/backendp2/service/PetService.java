@@ -22,15 +22,13 @@ public class PetService {
     IncubatorService incubatorService;
     IncubatorRepository incubatorRepository;
     PetRepository petRepository;
-    AdjectiveUtil adjectiveUtil;
 
     @Autowired
-    public PetService(UserService us, UserRepository up, IncubatorService is, IncubatorRepository ir, PetRepository pr, AdjectiveUtil au){
+    public PetService(UserService us, UserRepository up, IncubatorService is, IncubatorRepository ir, PetRepository pr){
         this.userService = us;
         this.userRepository = up;
         this.incubatorService = is;
         this.incubatorRepository = ir;
-        this.adjectiveUtil = au;
     }
 
     public List<Pet> getPetsByUserId(int userId) {
