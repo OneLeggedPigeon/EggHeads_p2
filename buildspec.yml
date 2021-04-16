@@ -18,7 +18,7 @@ phases:
     commands:
       # - echo testing...
       # - echo building...
-      - ng build --prod --base-href=./
+      - ng build --prod
 artifacts:
   files:
     - '**/*'
