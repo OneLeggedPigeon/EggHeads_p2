@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,13 +9,17 @@ import { MatMenuTrigger } from '@angular/material/menu';
 })
 export class NavbarComponent implements OnInit {
   @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
   someMethod() {
     this.trigger.openMenu();
+  }
+
+  logout(){
+    this.userService.logoutUser();
   }
 
 }

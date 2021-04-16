@@ -31,7 +31,7 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" onclick="location.href='https://github.com/OneLeggedPigeon/EggHeads_p2'">
    <mat-icon>share</mat-icon>
  </button>
- <button mat-icon-button class="favorite-icon" aria-label="Example icon-button with heart icon" routerLink="/login">
+ <button mat-icon-button class="favorite-icon" aria-label="Example icon-button with heart icon" (click)="logout()">
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
