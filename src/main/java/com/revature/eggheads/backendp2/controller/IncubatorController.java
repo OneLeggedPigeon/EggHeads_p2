@@ -1,5 +1,6 @@
 package com.revature.eggheads.backendp2.controller;
 
+import com.revature.eggheads.backendp2.model.Egg;
 import com.revature.eggheads.backendp2.model.EggTemplate;
 import com.revature.eggheads.backendp2.model.Incubator;
 import com.revature.eggheads.backendp2.model.User;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.attribute.UserPrincipalNotFoundException;
+
+//TODO: Make the mappings consistent, do we want user-id to be a PathVariable or RequestParameter?
 
 @RestController
 @RequestMapping("/incubator")
@@ -32,6 +35,18 @@ public class IncubatorController {
     public @ResponseBody
     Incubator addEggToIncubatorFromTemplate(@RequestParam("user-id") String userId, @RequestParam("template-id") String templateId){
         return incubatorService.addEggToIncubatorFromTemplate(Integer.valueOf(userId), Integer.valueOf(templateId));
+    }
+
+    /**
+     * The Egg in the body of the post shouldn't be in the database or have an id yet.
+     * @param userId the user who's incubator the egg will be added to
+     * @param egg an Egg to be added to the database
+     * @return the incubator the egg is added to
+     */
+    @PostMapping
+    public @ResponseBody
+    Incubator addEggToIncubator(@RequestParam("user-id") String userId, @RequestBody Egg egg){
+        return incubatorService.addEggToIncubator(Integer.valueOf(userId), egg);
     }
 
     @DeleteMapping

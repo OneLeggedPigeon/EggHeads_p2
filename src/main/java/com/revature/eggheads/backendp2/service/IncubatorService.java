@@ -54,6 +54,16 @@ public class IncubatorService {
         return incubator;
     }
 
+    public Incubator addEggToIncubator(Integer userId, Egg egg){
+        Incubator incubator = getOrCreateIncubatorByUserId(userId);
+        if(incubator.getEggs().size() < incubator.getCapacity()){
+            incubator.getEggs().add(egg);
+            egg.setIncubator(incubator);
+            return incubatorRepository.save(incubator);
+        }
+        return incubator;
+    }
+
     public Incubator removeEggFromIncubator(Integer userId, Integer eggId) {
         Incubator incubator = getOrCreateIncubatorByUserId(userId);
         if(incubator.getEggs().size() == 0) return incubator;

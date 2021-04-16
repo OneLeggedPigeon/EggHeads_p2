@@ -1,7 +1,9 @@
 package com.revature.eggheads.backendp2.controller;
 
+import com.revature.eggheads.backendp2.model.Egg;
 import com.revature.eggheads.backendp2.model.EggTemplate;
 import com.revature.eggheads.backendp2.repository.EggTemplateRepository;
+import com.revature.eggheads.backendp2.service.EggTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +17,12 @@ import java.util.List;
 public class EggTemplateController {
 
     private EggTemplateRepository repo;
+    private EggTemplateService service;
 
     @Autowired
-    public EggTemplateController(EggTemplateRepository repo){
+    public EggTemplateController(EggTemplateRepository repo, EggTemplateService service){
         this.repo = repo;
+        this.service = service;
     }
 
     @PostMapping
@@ -27,6 +31,16 @@ public class EggTemplateController {
     @GetMapping
     public @ResponseBody
     List<EggTemplate> getEggTemplate(){return repo.findAll();}
+
+    @GetMapping("/market")// TODO: rename this endpoint based on frontend implementation
+    public @ResponseBody
+    List<Egg> getRandomEggsFromTemplate(@RequestParam(name = "count", required = false) String count){
+        if(count == null){
+            return service.getUnregisteredRandomEggs();
+        } else {
+            return service.getUnregisteredRandomEggs(Integer.parseInt(count));
+        }
+    }
 
     @GetMapping("/{id}")
     public @ResponseBody
