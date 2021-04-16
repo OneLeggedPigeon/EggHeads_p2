@@ -7,10 +7,7 @@ import com.revature.eggheads.backendp2.service.EggImageService;
 import com.revature.eggheads.backendp2.util.EggImageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
@@ -29,6 +26,7 @@ import java.io.IOException;
  */
 @RestController
 @RequestMapping("image/egg")
+@CrossOrigin(origins = {"http://localhost:4200", "http://egghead-p2-angular.s3-website.us-east-2.amazonaws.com"})
 public class EggImageController {
 
     private EggImageService eggImageService;

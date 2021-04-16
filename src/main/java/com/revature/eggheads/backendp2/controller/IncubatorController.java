@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.attribute.UserPrincipalNotFoundException;
 
-//TODO: Make the mappings consistent, do we want user-id to be a PathVariable or RequestParameter?
-
 @RestController
 @RequestMapping("/incubator")
+@CrossOrigin(origins = {"http://localhost:4200", "http://egghead-p2-angular.s3-website.us-east-2.amazonaws.com"})
 public class IncubatorController {
 
     private IncubatorService incubatorService;
@@ -31,7 +30,8 @@ public class IncubatorController {
         return incubatorService.getOrCreateIncubatorByUserId(Integer.valueOf(userId));
     }
 
-    @PostMapping
+    // TODO: Remove this if we don't end up using it
+    @PostMapping("/add-by-template")
     public @ResponseBody
     Incubator addEggToIncubatorFromTemplate(@RequestParam("user-id") String userId, @RequestParam("template-id") String templateId){
         return incubatorService.addEggToIncubatorFromTemplate(Integer.valueOf(userId), Integer.valueOf(templateId));

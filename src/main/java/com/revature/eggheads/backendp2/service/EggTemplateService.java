@@ -30,7 +30,7 @@ public class EggTemplateService {
         List<EggTemplate> templates = eggTemplateRepository.findAll();
         List<Egg> eggs = new ArrayList<>();
         Random rand = new Random();
-        int s = templates.size();
+        int s = templates.size();//TODO handle count > s
         for(int i = s; i > s-count; i-- ){
             int index = rand.nextInt(i);
             EggTemplate t = templates.get(index);
