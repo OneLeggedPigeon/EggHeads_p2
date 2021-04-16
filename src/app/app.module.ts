@@ -16,6 +16,7 @@ import { TemplatesComponent } from './components/pages/templates/templates.compo
 import { IncubatorComponent } from './components/pages/incubator/incubator.component';
 import { PetsComponent } from './components/pages/pets/pets.component';
 import { UserService } from './services/user.service';
+import { EggTemplateComponent } from './components/objects/egg_template/egg_template.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UserService } from './services/user.service';
     TemplatesComponent,
     IncubatorComponent,
     PetsComponent,
+    EggTemplateComponent
   ],
   imports: [
     BrowserModule,
