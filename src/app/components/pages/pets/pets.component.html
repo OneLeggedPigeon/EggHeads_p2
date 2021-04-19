@@ -1,2 +1,26 @@
 <app-navbar></app-navbar>
 <p>pets works!</p>
+<div class="container">
+    <h1 class="header">{{'My Pets'}}</h1>
+    <div class="content">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Pet Adjective</th>
+            <th>Animal Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pet of pets">
+            <td>{{pet.id}}</td>
+            <td>{{pet.name}}</td>
+            <td>{{pet.petAdjective}}</td>
+            <td>{{pet.animalType}}</td>
+        
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
