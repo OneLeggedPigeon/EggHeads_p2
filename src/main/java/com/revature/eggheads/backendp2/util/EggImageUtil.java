@@ -15,8 +15,8 @@ public final class EggImageUtil {
     // These are set to Strings, as they are default uri parameter values
     public static final String SMALL_WIDTH = "120";
     public static final String SMALL_HEIGHT = "120";
-    public static final String WIDTH = "240";
-    public static final String HEIGHT = "240";
+    public static final String MEDIUM_WIDTH = "240";
+    public static final String MEDIUM_HEIGHT = "240";
     public static final String LARGE_WIDTH = "480";
     public static final String LARGE_HEIGHT = "480";
 

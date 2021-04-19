@@ -1,21 +1,11 @@
 package com.revature.eggheads.backendp2.controller;
 
-import com.revature.eggheads.backendp2.exception.ParameterOutOfBoundsException;
-import com.revature.eggheads.backendp2.exception.ParameterNotIncludedException;
-import com.revature.eggheads.backendp2.repository.EggTemplateRepository;
 import com.revature.eggheads.backendp2.service.EggImageService;
 import com.revature.eggheads.backendp2.util.EggImageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.imageio.ImageIO;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 
 /**
@@ -49,14 +39,22 @@ public class EggImageController {
      * @throws org.springframework.data.repository.query.ParameterOutOfBoundsException
      */
     @GetMapping
-    public void mediumImage(@RequestParam(name = "height", defaultValue = EggImageUtil.HEIGHT) String imgHeight,
-                              @RequestParam(name = "width", defaultValue = EggImageUtil.WIDTH) String imgWidth,
+    public void image(@RequestParam(name = "height", defaultValue = EggImageUtil.MEDIUM_HEIGHT) String imgHeight,
+                              @RequestParam(name = "width", defaultValue = EggImageUtil.MEDIUM_WIDTH) String imgWidth,
                               @RequestParam(name = "size", required = false) String size,
                               @RequestParam(name = "red", required = false) String red,
                               @RequestParam(name = "green", required = false) String green,
                               @RequestParam(name = "blue", required = false) String blue,
                               HttpServletResponse response) throws IOException {
         eggImageService.generateImage(imgHeight, imgWidth, size, red, green, blue, response);
+    }
+    @GetMapping("/medium")
+    public void mediumImage(@RequestParam(name = "size", required = false) String size,
+                           @RequestParam(name = "red", required = false) String red,
+                           @RequestParam(name = "green", required = false) String green,
+                           @RequestParam(name = "blue", required = false) String blue,
+                           HttpServletResponse response) throws IOException {
+        eggImageService.generateImage(EggImageUtil.MEDIUM_HEIGHT, EggImageUtil.MEDIUM_WIDTH, size, red, green, blue, response);
     }
     @GetMapping("/small")
     public void smallImage(@RequestParam(name = "size", required = false) String size,
