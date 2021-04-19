@@ -1,11 +1,5 @@
-<mat-grid-list cols="3" rowHeight="1:1">
-    <mat-grid-tile><app-egg></app-egg></mat-grid-tile>
-    <mat-grid-tile><app-egg></app-egg></mat-grid-tile>
-    <mat-grid-tile><app-egg></app-egg></mat-grid-tile>
-    <mat-grid-tile><app-egg></app-egg></mat-grid-tile>
-    <mat-grid-tile><app-egg></app-egg></mat-grid-tile>
-    <mat-grid-tile><app-egg></app-egg></mat-grid-tile>
-    <mat-grid-tile><app-egg></app-egg></mat-grid-tile>
-    <mat-grid-tile><app-egg></app-egg></mat-grid-tile>
-    <mat-grid-tile><app-egg></app-egg></mat-grid-tile>
+<mat-grid-list cols="3" rowHeight="2:3">
+    <mat-grid-tile *ngFor='let egg of eggs'>
+        <app-egg [egg]='egg' [imageSize]='imageSize'></app-egg>
+    </mat-grid-tile>
 </mat-grid-list>

@@ -1,12 +1,12 @@
 import { Timestamp } from "rxjs";
 
 export class Egg {
-    id!:number;
+    id?:number;
     ready!:boolean;
-    timeCreated!:Date;
-    timeComplete!:Date;
-    startingSize!:number;
-    maxSize!:number;
+    timeCreated!:string;
+    timeComplete!:string;
+    startingSize?:number;
+    maxSize?:number;
     currentSize!:number;
     redValue!:number;
     greenValue!:number;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Egg } from 'src/app/models/egg';
 
 @Component({
@@ -7,26 +7,22 @@ import { Egg } from 'src/app/models/egg';
   styleUrls: ['./egg.component.css']
 })
 export class EggComponent implements OnInit {
-  egg:Egg;
-  imageUrl:string;
-  imageSize:string;
+  @Input() egg!:Egg;
+  @Input() imageSize!:string; // 'small', 'medium', 'large'
+  imageUrl!:string;
+  hoursHatching!:number;
 
   constructor() {
-    this.egg = new Egg();
-    this.imageSize = "small";// 'small', '', 'large'
-    this.imageUrl = "http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/image/egg/"
   }
 
   ngOnInit(): void {
-    // let size:string = this.egg.currentSize.toString();
-    // let red:string = this.egg.redValue.toString();
-    // let green:string = this.egg.greenValue.toString();
-    // let blue:string = this.egg.blueValue.toString();
-    let size = "10";
-    let red = "100";
-    let green = "100";
-    let blue = "100";
-    this.imageUrl = this.imageUrl.concat(this.imageSize,'?size=',size,'&red=',red,'&green=',green,'&blue=',blue);
+    this.hoursHatching = (new Date().getTime() - new Date(this.egg.timeCreated).getTime())/3600000;
+    this.imageUrl = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com';
+    let size:string = this.egg.currentSize.toString();
+    let red:string = this.egg.redValue.toString();
+    let green:string = this.egg.greenValue.toString();
+    let blue:string = this.egg.blueValue.toString();
+    this.imageUrl = this.imageUrl.concat('/image/egg/',this.imageSize,'?size=',size,'&red=',red,'&green=',green,'&blue=',blue);
   }
 
 }
