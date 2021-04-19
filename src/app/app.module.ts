@@ -17,6 +17,7 @@ import { IncubatorComponent } from './components/pages/incubator/incubator.compo
 import { PetsComponent } from './components/pages/pets/pets.component';
 import { UserService } from './services/user.service';
 import { EggTemplateComponent } from './components/objects/egg_template/egg_template.component';
+import { IncubatorPreviewComponent } from './components/objects/incubator-preview/incubator-preview.component';
 import { EggComponent } from './components/objects/egg/egg.component';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { EggComponent } from './components/objects/egg/egg.component';
     IncubatorComponent,
     PetsComponent,
     EggTemplateComponent,
+    IncubatorPreviewComponent,
     EggComponent
   ],
   imports: [

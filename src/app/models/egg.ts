@@ -2,7 +2,7 @@ import { Timestamp } from "rxjs";
 
 export class Egg {
     id!:number;
-    isReady!:boolean;
+    ready!:boolean;
     timeCreated!:Date;
     timeComplete!:Date;
     startingSize!:number;
