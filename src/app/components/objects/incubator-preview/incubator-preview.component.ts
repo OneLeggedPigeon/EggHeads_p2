@@ -20,6 +20,7 @@ export class IncubatorPreviewComponent implements OnInit {
   }
 
   getEggs(): void {
-    this.eggs = this.eggService.getEggs();
+    this.eggService.getEggs()
+      .subscribe(eggs => this.eggs = eggs);
   }
 }
