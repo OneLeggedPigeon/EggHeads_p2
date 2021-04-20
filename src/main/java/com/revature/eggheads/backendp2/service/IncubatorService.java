@@ -9,6 +9,7 @@ import com.revature.eggheads.backendp2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -56,6 +57,9 @@ public class IncubatorService {
 
     public Incubator addEggToIncubator(Integer userId, Egg egg){
         Incubator incubator = getOrCreateIncubatorByUserId(userId);
+        if(incubator.getEggs() == null){
+            incubator.setEggs(new ArrayList<Egg>());
+        }
         if(incubator.getEggs().size() < incubator.getCapacity()){
             incubator.getEggs().add(egg);
             egg.setIncubator(incubator);
