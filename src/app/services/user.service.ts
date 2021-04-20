@@ -58,12 +58,14 @@ export class UserService {
   isUserLoggedIn(){
     let username = this.storage.getItem("username");
     let token = this.storage.getItem("token");
-    return !(username === null || token === null);
+    let userId = this.storage.getItem("user-id");
+    return !(username === null || token === null || userId === null);
   }
 
   logoutUser(){
     this.storage.removeItem("token");
     this.storage.removeItem("username");
+    this.storage.removeItem("user-id");
     this.router.navigate(['']);
   }
 }
