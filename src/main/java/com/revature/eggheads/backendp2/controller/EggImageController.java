@@ -28,8 +28,8 @@ public class EggImageController {
 
     /**
      * All Parameters are read from the request and parsed into Strings
-     * @param imgHeight Image Height in pixels, defaults to EggImageUtil.HEIGHT
-     * @param imgWidth Image Width in pixels, defaults to EggImageUtil.WIDTH
+     * @param imgHeight Image Height in pixels, defaults to EggImageUtil.LARGE for scaling down
+     * @param imgWidth Image Width in pixels, defaults to EggImageUtil.LARGE for scaling down
      * @param size 0-100
      * @param red 0-255
      * @param green 0-255
@@ -39,8 +39,8 @@ public class EggImageController {
      * @throws org.springframework.data.repository.query.ParameterOutOfBoundsException
      */
     @GetMapping
-    public void image(@RequestParam(name = "height", defaultValue = EggImageUtil.MEDIUM_HEIGHT) String imgHeight,
-                              @RequestParam(name = "width", defaultValue = EggImageUtil.MEDIUM_WIDTH) String imgWidth,
+    public void image(@RequestParam(name = "height", defaultValue = EggImageUtil.LARGE_HEIGHT) String imgHeight,
+                              @RequestParam(name = "width", defaultValue = EggImageUtil.LARGE_WIDTH) String imgWidth,
                               @RequestParam(name = "size", required = false) String size,
                               @RequestParam(name = "red", required = false) String red,
                               @RequestParam(name = "green", required = false) String green,
