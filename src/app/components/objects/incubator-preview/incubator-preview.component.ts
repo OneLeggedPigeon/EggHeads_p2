@@ -15,7 +15,7 @@ export class IncubatorPreviewComponent implements OnInit {
   constructor(private eggService: EggService) { }
 
   ngOnInit(): void {
-    this.imageSize = 'small';
+    this.imageSize = 'large';
     this.getEggs();
   }
 
