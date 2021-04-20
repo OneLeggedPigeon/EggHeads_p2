@@ -17,8 +17,8 @@ public final class EggImageUtil {
     public static final String SMALL_HEIGHT = "120";
     public static final String MEDIUM_WIDTH = "240";
     public static final String MEDIUM_HEIGHT = "240";
-    public static final String LARGE_WIDTH = "480";
-    public static final String LARGE_HEIGHT = "480";
+    public static final String LARGE_WIDTH = "800";
+    public static final String LARGE_HEIGHT = "800";
 
     // border of unused space around the image
     private static final int MARGIN = 4;
