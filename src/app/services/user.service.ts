@@ -31,6 +31,7 @@ export class UserService {
       if(res.jwt){
         this.storage.setItem("token",res.jwt);
         this.storage.setItem("username", user.username);
+        this.storage.setItem("user-id",res.userId);
         this.router.navigate(['/dashboard']);
       }
       else{
@@ -45,6 +46,7 @@ export class UserService {
       if(res.jwt){
         this.storage.setItem("token",res.jwt);
         this.storage.setItem("username", user.username);
+        this.storage.setItem("user-id",res.userId);
         this.router.navigate(['/dashboard']);
       }
       else{
