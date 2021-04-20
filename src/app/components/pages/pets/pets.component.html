@@ -1,26 +1,37 @@
 <app-navbar></app-navbar>
-<p>pets works!</p>
-<div class="container">
-    <h1 class="header">{{'My Pets'}}</h1>
-    <div class="content">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Pet Adjective</th>
-            <th>Animal Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let pet of pets">
-            <td>{{pet.id}}</td>
-            <td>{{pet.name}}</td>
-            <td>{{pet.petAdjective}}</td>
-            <td>{{pet.animalType}}</td>
-        
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<h2 style = "margin-left: 10px">My Pets</h2>
+<div class="wrap">
+    <div class="fleft">
+        <mat-card class="card-style" *ngFor="let pet of pets">
+            <mat-card-header>
+                <mat-card-title>Name : {{pet.name | uppercase}}</mat-card-title>
+                <mat-card-subtitle>ID : {{pet.id}}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-actions>
+                <button class="button-style" 
+                mat-button [class.selected]="pet === selectedPet"
+                (click)="onSelect(pet)"
+                mat-raised-button color="primary">
+                Details</button>
+            </mat-card-actions>
+        </mat-card>
+</div>
+    <div class="fright">
+        <div  *ngIf="selectedPet">
+
+            <h2>Selected Pet Information</h2>
+            <mat-list>
+                <mat-list-item class="mat-list-style">ID: {{selectedPet.id}}</mat-list-item>
+                <mat-divider vertical style="height: 5px;"></mat-divider>
+                <mat-list-item class="mat-list-style">Name: {{selectedPet.name}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="mat-list-style">Description: {{selectedPet.petAdjective}} {{selectedPet.animalType}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="mat-list-style">Owned by User: {{owner}}</mat-list-item>
+                <mat-divider></mat-divider>
+                
+            </mat-list>
+        </div>
+    </div>  
+</div>

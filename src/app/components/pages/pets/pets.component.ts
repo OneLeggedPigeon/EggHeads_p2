@@ -9,6 +9,9 @@ import { Pet } from 'src/app/models/Pet';
 })
 export class PetsComponent implements OnInit {
   pets: Pet[] = [];
+  selectedPet? : Pet;
+  storage:Storage = localStorage;
+  owner?: string;
 
   constructor(private petService:PetService) { }
 
@@ -16,6 +19,14 @@ export class PetsComponent implements OnInit {
     this.petService.getPets().subscribe(pets => {
       this.pets = pets;
     });
+  }
+
+  onSelect(pet: Pet): void {
+    this.selectedPet = pet;
+    let ownerName = this.storage.getItem("username");
+    if (!(ownerName === null)){
+      this.owner = ownerName;
+    }
   }
 
 

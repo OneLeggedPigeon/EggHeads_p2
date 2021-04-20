@@ -1,0 +1,31 @@
+.card-style {
+    margin-left: 10px;
+    max-width: 400px;
+    margin-bottom: 5px;
+  }
+.button-style{
+    position: absolute;
+    right:    10px;
+    bottom:   10px;
+}
+
+.wrap {
+    width: 100%;
+    overflow:auo;
+    }
+    
+.fleft {
+    float:left; 
+    width: 40%;
+    height: 400px;
+}
+    
+.fright {
+float: right;
+    height: 400px;
+    width: 60%;
+}
+    
+.mat-list-style{
+    color:black;
+}
