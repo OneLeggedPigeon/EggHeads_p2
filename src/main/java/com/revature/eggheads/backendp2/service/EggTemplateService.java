@@ -36,7 +36,7 @@ public class EggTemplateService {
         if (count > s) {
             // repeats allowed
             for(int i = 0; i < count; i++ ){
-                int index = rand.nextInt(count);
+                int index = rand.nextInt(s);
                 eggs.add(eggService.createEggFromTemplate(templates.get(index)));
             }
         } else if (count == s) {
