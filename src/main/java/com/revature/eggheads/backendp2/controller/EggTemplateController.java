@@ -33,14 +33,16 @@ public class EggTemplateController {
     public @ResponseBody
     List<EggTemplate> getEggTemplate(){return repo.findAll();}
 
-    @GetMapping("/market")// TODO: rename this endpoint based on frontend implementation
+    @GetMapping("/market")
     public @ResponseBody
-    List<Egg> getRandomEggsFromTemplate(@RequestParam(name = "count", required = false) String count){
-        if(count == null){
-            return service.getUnregisteredRandomEggs();
-        } else {
-            return service.getUnregisteredRandomEggs(Integer.parseInt(count));
-        }
+    List<Egg> getRandomEggsFromTemplates(){
+        return service.getUnregisteredRandomEggs();
+    }
+
+    @GetMapping("/market/{count}")
+    public @ResponseBody
+    List<Egg> getRandomEggsFromTemplates(@PathVariable("count") String count){
+        return service.getUnregisteredRandomEggs(Integer.parseInt(count));
     }
 
     @GetMapping("/{id}")
