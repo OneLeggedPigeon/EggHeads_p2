@@ -22,6 +22,7 @@ import { EggComponent } from './components/objects/egg/egg.component';
 import { MarketComponent } from './components/pages/market/market.component';
 import { MarketEggComponent } from './components/objects/market-egg/market-egg.component';
 import { IncubatorEggComponent } from './components/objects/incubator-egg/incubator-egg.component';
+import { NewTemplateComponent } from './components/forms/new-template/new-template.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { IncubatorEggComponent } from './components/objects/incubator-egg/incuba
     EggComponent,
     MarketComponent,
     MarketEggComponent,
-    IncubatorEggComponent
+    IncubatorEggComponent,
+    NewTemplateComponent,
   ],
   imports: [
     BrowserModule,
