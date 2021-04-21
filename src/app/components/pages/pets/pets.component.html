@@ -20,15 +20,17 @@
     <div class="fright">
         <div  *ngIf="selectedPet">
 
-            <h2>Selected Pet Information</h2>
+            <h2>{{selectedPet.name}} the {{selectedPet.petAdjective | titlecase}} {{selectedPet.animalType | titlecase}}</h2>
             <mat-list>
-                <mat-list-item class="mat-list-style">ID: {{selectedPet.id}}</mat-list-item>
-                <mat-divider vertical style="height: 5px;"></mat-divider>
                 <mat-list-item class="mat-list-style">Name: {{selectedPet.name}}</mat-list-item>
+                <mat-divider vertical style="height: 5px;"></mat-divider>
+                <mat-list-item class="mat-list-style">ID: {{selectedPet.id}}</mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item class="mat-list-style">Description: {{selectedPet.petAdjective}} {{selectedPet.animalType}}</mat-list-item>
+                <mat-list-item class="mat-list-style">Species: {{selectedPet.animalType | titlecase}}</mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item class="mat-list-style">Owned by User: {{owner}}</mat-list-item>
+                <mat-list-item class="mat-list-style">Temperment: {{selectedPet.petAdjective | titlecase}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="mat-list-style">Owner: {{owner}}</mat-list-item>
                 <mat-divider></mat-divider>
                 
             </mat-list>
