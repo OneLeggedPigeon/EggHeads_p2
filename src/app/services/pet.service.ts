@@ -12,21 +12,21 @@ import { MessageService } from './message.service';
 })
 export class PetService {
 
+  storage:Storage = localStorage;
+
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
+    ,'Authorization': `Bearer ${this.storage.getItem("token")}`
   })
 
   dev:string = 'http://localhost:9000';
   cors:string = 'https://cors.io/?'
   prod:string = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com';
-  get:string = '/pet';
-  getById:string = '/pet/{user-id}';
-  getByIdFR:string ='/pet/48';
+  get:string = '/pet/';
+
   getAllUrlDev:string = `${this.dev}${this.get}`
   getAllUrl:string = `${this.prod}${this.get}`
-  getByIdUrl:string = `${this.prod}${this.getById}`
 
-  getByIdUrlTesting:string = `${this.prod}${this.getByIdFR}`
 
   constructor(
     private http:HttpClient,
@@ -35,8 +35,8 @@ export class PetService {
 
   /** GET Pets of current user */
   getPets(): Observable<Pet[]> {
-    let id = localStorage.getItem("user-id");
-    const url = `${this.prod}/pet/${id}`;
+    let id = this.storage.getItem("user-id");
+    const url = `${this.getAllUrl}${id}`;
     return this.http.get<Pet[]>(url,{
         headers: this.headers
       }).pipe(
@@ -47,8 +47,8 @@ export class PetService {
   
   /** GET Pet of current user */
   getPet(petId:number): Observable<Pet> {
-    let id = localStorage.getItem("user-id");
-    const url = `${this.prod}/pet/${id}`;
+    let id = this.storage.getItem("user-id");
+    const url = `${this.getAllUrl}${id}`;
     return this.http.get<Pet>(url,{
         headers: this.headers,
         params: new HttpParams().append("pet-id",petId.toString())
@@ -60,8 +60,8 @@ export class PetService {
 
   /** POST new Pet to current user */
   addPetFromEgg(egg: Egg, name: string): Observable<Pet> {
-    let id = localStorage.getItem("user-id");
-    const url = `${this.prod}/pet/${id}`;
+    let id = this.storage.getItem("user-id");
+    const url = `${this.getAllUrl}${id}`;
     return this.http.get<Pet>(url,{
         headers: this.headers,
         params: new HttpParams()
