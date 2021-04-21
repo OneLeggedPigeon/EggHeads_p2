@@ -73,12 +73,10 @@ public class PetService {
         return petRepository.save(pet);
     }
 
-    public User removePetFromUser(Integer userId, Integer petId) {
-        User user = userService.getUserById(userId);
-        if(user.getPets().size() == 0) return user;
-        List<Pet> pets = user.getPets().stream().filter(pet->pet.getId() != petId).collect(Collectors.toList());
-        user.getPets().clear();
-        user.getPets().addAll(pets);
-        return userRepository.save(user);
+    public Pet removePetFromUser(Integer userId, Integer petId) {
+        Pet pet = petRepository.findById(petId).orElse(null);
+        // don't delete pet if given the wrong userId
+        if (pet != null && pet.getUser().getId() == userId) petRepository.delete(pet);
+        return pet;
     }
 }
