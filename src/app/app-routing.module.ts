@@ -12,11 +12,11 @@ import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'login', component: HomeComponent},
-  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuardService]},
-  { path: 'templates', component: TemplatesComponent, canActivate:[AuthGuardService]},
-  { path: 'incubator', component: IncubatorComponent, canActivate:[AuthGuardService]},
-  { path: 'pets', component: PetsComponent, canActivate:[AuthGuardService]},
-  { path: 'market', component: MarketComponent, canActivate:[AuthGuardService]}
+  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuardService], data: {header:true}},
+  { path: 'templates', component: TemplatesComponent, canActivate:[AuthGuardService], data: {header:true}},
+  { path: 'incubator', component: IncubatorComponent, canActivate:[AuthGuardService], data: {header:true}},
+  { path: 'pets', component: PetsComponent, canActivate:[AuthGuardService], data: {header:true}},
+  { path: 'market', component: MarketComponent, canActivate:[AuthGuardService], data: {header:true}}
 ];
 
 @NgModule({

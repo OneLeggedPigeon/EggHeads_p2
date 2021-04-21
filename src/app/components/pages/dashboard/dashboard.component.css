@@ -1,7 +1,8 @@
 .mat-grid-list {
-    background-color: grey;
+
 }
 .mat-grid-tile {
-    outline-style: solid;
-    outline-color: black;
+    margin: 0;
+    background:#333333e7;
+  color: #fff;
 }
