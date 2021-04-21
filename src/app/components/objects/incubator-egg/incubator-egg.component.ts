@@ -30,7 +30,7 @@ export class IncubatorEggComponent implements OnInit {
     if(this.name){
       this.messageService.add(`hatching Egg ${this.egg.id} with name ${this.name}`);
       // no need to call delete, that happens automatically in the backend when you add the pet successfully
-      this.petService.addPetFromEgg(this.egg, this.name);
+      this.petService.addPetFromEgg(this.egg, this.name).subscribe();
       this.router.navigateByUrl('/pets')
     }
   }
