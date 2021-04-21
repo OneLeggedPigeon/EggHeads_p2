@@ -10,10 +10,14 @@ import { Pet } from 'src/app/models/Pet';
 export class PetsComponent implements OnInit {
   pets: Pet[] = [];
   selectedPet? : Pet;
+  abandonedPet? : Pet;
+  petRemoved : boolean = false;
   storage:Storage = localStorage;
   owner?: string;
 
-  constructor(private petService:PetService) { }
+  constructor(
+    private petService:PetService
+  ) { }
 
   ngOnInit(): void {
     this.petService.getPets().subscribe(pets => {
@@ -29,5 +33,13 @@ export class PetsComponent implements OnInit {
     }
   }
 
+  abandon(pet: Pet): void {
+    this.abandonedPet = pet;
+    this.petService.removePet(this.abandonedPet.id).subscribe(pet => {
+      if (pet) this.petRemoved = true;
+    });
+  }
 
+  reload(): void {
+  }
 }

@@ -9,7 +9,7 @@ import { EggTemplateService } from 'src/app/services/egg-template.service';
 })
 export class MarketComponent implements OnInit {
   eggs!:Egg[];
-  count:number = 5;
+  count:number = 6;
 
   constructor(private eggTemplateService: EggTemplateService) { }
 

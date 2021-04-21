@@ -1,15 +1,19 @@
 <div>
     <mat-grid-tile-header>
-        Egg {{egg.id}}: Incubating for {{hoursHatching.toFixed(1)}} hours.
+        <p>Egg {{egg.id}}: Incubating for {{hoursHatching.toFixed(1)}} hours.</p>
+        <p class='hatch' *ngIf='egg.ready'>Ready to Hatch!</p>
     </mat-grid-tile-header>
     <app-egg [size]='egg.currentSize' [red]='egg.redValue' [green]='egg.greenValue' [blue]='egg.blueValue'></app-egg>
     <mat-grid-tile-footer *ngIf='egg.ready'>
         <div>
-            <label for="pet-name">Give your pet a name: </label>
-            <input id="pet-name" [(ngModel)]="name" placeholder="Pet Name">
+            <button *ngIf='name' (click)='hatch()'>Hatch!</button>
         </div>
         <div>
-            <button *ngIf='name' (click)='hatch()'>Hatch!</button>
+            <label class='hatch' for="pet-name">Give your pet a name: </label>
+            <input id="pet-name" [(ngModel)]="name" placeholder="Pet Name">
+        </div>
+        <div *ngIf='hatchError'>
+            <p color='red'>Something went wrong</p>
         </div>
     </mat-grid-tile-footer>
 </div>

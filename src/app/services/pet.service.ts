@@ -21,12 +21,7 @@ export class PetService {
 
   dev:string = 'http://localhost:9000';
   cors:string = 'https://cors.io/?'
-  prod:string = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com';
-  get:string = '/pet/';
-
-  getAllUrlDev:string = `${this.dev}${this.get}`
-  getAllUrl:string = `${this.prod}${this.get}`
-
+  prod:string = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/pet';
 
   constructor(
     private http:HttpClient,
@@ -35,8 +30,8 @@ export class PetService {
 
   /** GET Pets of current user */
   getPets(): Observable<Pet[]> {
-    let id = this.storage.getItem("user-id");
-    const url = `${this.getAllUrl}${id}`;
+    let id = localStorage.getItem("user-id");
+    const url = `${this.prod}/${id}`;
     return this.http.get<Pet[]>(url,{
         headers: this.headers
       }).pipe(
@@ -47,8 +42,10 @@ export class PetService {
 
   /** GET Pet of current user */
   getPet(petId:number): Observable<Pet> {
-    let id = this.storage.getItem("user-id");
-    const url = `${this.getAllUrl}${id}`;
+    let id = localStorage.getItem("user-id");
+    const params = new HttpParams()
+      .set("pet-id", petId.toString());
+    const url = `${this.prod}/${id}?${params.toString()}`;
     return this.http.get<Pet>(url,{
         headers: this.headers
       }).pipe(
@@ -59,14 +56,31 @@ export class PetService {
 
   /** POST new Pet to current user */
   addPetFromEgg(egg: Egg, name: string): Observable<Pet> {
-    let id = this.storage.getItem("user-id");
-    const url = `${this.getAllUrl}${id}`;
-    return this.http.get<Pet>(url,{
+    let id = localStorage.getItem("user-id");
+    const params = new HttpParams()
+      .set("egg-id", egg.id!.toString())
+      .set("name", name);
+    const url = `${this.prod}/${id}?${params.toString()}`;
+    return this.http.post<Pet>(url,{
         headers: this.headers,
       }).pipe(
       tap(_ => this.log(`added Pet ${name} to User id=${id} using Egg id=${egg.id!.toString()}`)),
       catchError(this.handleError<Pet>(`addPetFromEgg`))
     );
+  }
+
+  /** DELETE Pet of current user */
+  removePet(petId:number): Observable<Pet> {
+    let id = localStorage.getItem("user-id");
+    const params = new HttpParams()
+      .set("pet-id", petId.toString());
+    const url = `${this.prod}/${id}?${params.toString()}`;
+    return this.http.delete<Pet>(url,{
+        headers: this.headers
+      }).pipe(
+        tap(_ => this.log(`fetched Pet id=${petId}`)),
+        catchError(this.handleError<Pet>(`getPet`))
+      );
   }
 
   /** Log a IncubatorService message with the MessageService */

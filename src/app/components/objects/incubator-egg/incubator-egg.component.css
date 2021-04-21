@@ -1,0 +1,8 @@
+.hatch {
+    color: black;
+    background-color:darkgoldenrod;
+    font-weight: bold;
+    margin: 5px;
+    padding: .3em;
+    border-radius: 4px;
+}

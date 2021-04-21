@@ -14,6 +14,8 @@ export class IncubatorEggComponent implements OnInit {
   @Input() egg!:Egg;
   hoursHatching!:number;
   name:string = '';
+  clickedHatch:boolean = false;
+  hatchError:boolean = false;
 
   constructor(
     private incubatorService: IncubatorService,
@@ -27,10 +29,19 @@ export class IncubatorEggComponent implements OnInit {
   }
 
   hatch(): void {
-    this.messageService.add(`hatching Egg ${this.egg.id} with name ${this.name}`);
-    // no need to call delete, that happens automatically in the backend when you add the pet successfully
-    this.petService.addPetFromEgg(this.egg, this.name).subscribe(pet => {
-      if(pet) this.router.navigateByUrl('/pets');
-    });
+    // incase they spam click while it's loading
+    if(!this.clickedHatch){
+      this.clickedHatch = true;
+      this.messageService.add(`hatching Egg ${this.egg.id} with name ${this.name}`);
+      // no need to call delete, that happens automatically in the backend when you add the pet successfully
+      this.petService.addPetFromEgg(this.egg, this.name).subscribe(pet => {
+        if(pet) {
+          this.router.navigateByUrl('/pets');
+        } else {
+          this.clickedHatch = false;
+          this.hatchError = true;
+        }
+      });
+    }
   }
 }
