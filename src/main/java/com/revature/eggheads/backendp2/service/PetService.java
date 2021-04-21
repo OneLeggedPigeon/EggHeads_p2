@@ -29,6 +29,7 @@ public class PetService {
         this.userRepository = up;
         this.incubatorService = is;
         this.incubatorRepository = ir;
+        this.petRepository = pr;
     }
 
     public List<Pet> getPetsByUserId(int userId) {
