@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Egg } from '../models/egg';
 
 import { Pet } from '../models/Pet';
 import { MessageService } from './message.service';
@@ -11,11 +12,9 @@ import { MessageService } from './message.service';
 })
 export class PetService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
 
   dev:string = 'http://localhost:9000';
   cors:string = 'https://cors.io/?'
@@ -34,12 +33,44 @@ export class PetService {
     private messageService: MessageService
   ) { }
 
+  /** GET Pets of current user */
   getPets(): Observable<Pet[]> {
-    return this.http.get<Pet[]>(
-      this.getByIdUrlTesting).pipe(
+    let id = localStorage.getItem("user-id");
+    const url = `${this.prod}/pet/${id}`;
+    return this.http.get<Pet[]>(url,{
+        headers: this.headers
+      }).pipe(
         tap(_ => this.log(`fetched Pets`)),
         catchError(this.handleError<Pet[]>(`getPets`, []))
       );
+  }
+  
+  /** GET Pet of current user */
+  getPet(petId:number): Observable<Pet> {
+    let id = localStorage.getItem("user-id");
+    const url = `${this.prod}/pet/${id}`;
+    return this.http.get<Pet>(url,{
+        headers: this.headers,
+        params: new HttpParams().append("pet-id",petId.toString())
+      }).pipe(
+        tap(_ => this.log(`fetched Pet id=${petId}`)),
+        catchError(this.handleError<Pet>(`getPet`))
+      );
+  }
+
+  /** POST new Pet to current user */
+  addPetFromEgg(egg: Egg, name: string): Observable<Pet> {
+    let id = localStorage.getItem("user-id");
+    const url = `${this.prod}/pet/${id}`;
+    return this.http.get<Pet>(url,{
+        headers: this.headers,
+        params: new HttpParams()
+          .append("egg-id", egg.id!.toString())
+          .append("name", name)
+      }).pipe(
+      tap(_ => this.log(`added Pet id=${id}`)),
+      catchError(this.handleError<Pet>(`addPetFromEgg`))
+    );
   }
 
   /** Log a IncubatorService message with the MessageService */
