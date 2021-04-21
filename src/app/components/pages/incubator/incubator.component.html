@@ -1,2 +1,9 @@
 <app-navbar></app-navbar>
-<app-incubator-preview></app-incubator-preview>
+<div class='centered-page-wrapper'>
+    <div *ngIf='!eggs.length && loaded'>You have no eggs :(</div>
+    <mat-grid-list cols="3" rowHeight="1:1">
+        <mat-grid-tile *ngFor='let egg of eggs'>
+            <app-incubator-egg [egg]='egg'></app-incubator-egg>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
