@@ -1,0 +1,46 @@
+<div class="new-template-wrapper" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="left center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Create New Template</mat-card-title>
+      </mat-card-header>
+      <form class="example-form">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput type="text" [(ngModel)]="name" name="name" placeholder="Name">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="text" [(ngModel)]="animal" name="animal" placeholder="Animal">
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" [(ngModel)]="incubationPeriod" name="incubationPeriod" placeholder="Incubation Period (Hours)">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input id="input01" matInput type="number" [(ngModel)]="size" [value]=50 name="size" placeholder="Size">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" [(ngModel)]="redVal" [value]=250 name="redVal" placeholder="Red value">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" [(ngModel)]="greenVal" [value]=250 name="greenVal" placeholder="Green value">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" [(ngModel)]="blueVal" [value]=250 name="blueVal" placeholder="Blue value">
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-raised-button color="primary" class="btn-block" (click)="onCreate()">Create</button>
+      </form>
+    </mat-card>
+
+    <mat-card class="box2">
+      <mat-card-header>
+        <mat-card-title *ngIf='name && animal'>{{name}}, a template for {{animal}} Eggs</mat-card-title>
+      </mat-card-header>
+      <app-egg [size]="size" [red]="redVal" [green]="greenVal" [blue]="blueVal"></app-egg>
+    </mat-card>
+  </div>

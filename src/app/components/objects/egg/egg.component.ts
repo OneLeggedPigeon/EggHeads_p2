@@ -12,18 +12,31 @@ export class EggComponent implements OnInit {
   @Input() red!:number;
   @Input() green!:number;
   @Input() blue!:number;
+  baseUrl:string = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/image/egg/';
   imageUrl!:string;
 
   constructor(private userService: UserService) {
   }
 
+  getSize() { return this.size ?? 0;}
+  getRed() { return this.red ?? 0;}
+  getGreen() { return this.green ?? 0;}
+  getBlue() { return this.blue ?? 0;}
+
   ngOnInit(): void {
-    this.imageUrl = this.userService.prod;
-    this.imageUrl = this.imageUrl.concat('/image/egg/',
-      '?size=',this.size.toString(),
-      '&red=',this.red.toString(),
-      '&green=',this.green.toString(),
-      '&blue=',this.blue.toString()
+    this.updateImage();
+  }
+
+  ngOnChanges(): void {
+    this.updateImage();
+  }
+
+  updateImage(): void {
+    this.imageUrl = this.baseUrl.concat(
+      '?size=',Math.min(this.getSize(), 100).toString(),
+      '&red=',Math.min(this.getRed(), 255).toString(),
+      '&green=',Math.min(this.getGreen(), 255).toString(),
+      '&blue=',Math.min(this.getBlue(), 255).toString()
     );
   }
 }
