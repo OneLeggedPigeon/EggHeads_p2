@@ -43,20 +43,20 @@ export class EggTemplateService {
   
 
   /** GET Eggs, one from each existing template */
-  getRandomEggsFromTemplates(): Observable<Egg[]> {
+  getAllRandomEggs(): Observable<Egg[]> {
     const url = `${this.eggTemplateUrl}/market`;
     return this.http.get<Egg[]>(url, this.httpOptions).pipe(
       tap(_ => this.log('fetched Eggs')),
-      catchError(this.handleError<Egg[]>(`getRandomEggsFromTemplates`, []))
+      catchError(this.handleError<Egg[]>(`getAllRandomEggs`, []))
     );
   }
 
   /** GET Eggs, 'count' of them, from different templates unless count is higher than the number of templates */
-  getRandomEggsFromTemplate(count: number): Observable<Egg[]> {
+  getRandomEggs(count: number): Observable<Egg[]> {
     const url = `${this.eggTemplateUrl}/market/${count}`;
     return this.http.get<Egg[]>(url, this.httpOptions).pipe(
       tap(_ => this.log(`fetched ${count} Eggs`)),
-      catchError(this.handleError<Egg[]>(`getRandomEggsFromTemplate count=${count}`))
+      catchError(this.handleError<Egg[]>(`getRandomEggs count=${count}`))
     );
   }
 
