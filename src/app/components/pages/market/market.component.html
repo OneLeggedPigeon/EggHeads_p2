@@ -1,2 +1,7 @@
 <app-navbar></app-navbar>
-<p>market works!</p>
+<mat-grid-list cols="5" rowHeight="500px">
+    <mat-grid-tile *ngFor='let egg of eggs'>
+        <app-market-egg [egg]='egg'></app-market-egg>
+    </mat-grid-tile>
+</mat-grid-list>
+<button (click)='getEggs()'>New Set</button>

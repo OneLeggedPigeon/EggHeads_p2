@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Egg } from 'src/app/models/egg';
-import { UserService } from 'src/app/services/user.service';
-import { EggComponent } from '../egg/egg.component'
 
 @Component({
   selector: 'app-incubator-egg',
@@ -10,10 +8,9 @@ import { EggComponent } from '../egg/egg.component'
 })
 export class IncubatorEggComponent implements OnInit {
   @Input() egg!:Egg;
-  imageUrl!:string;
   hoursHatching!:number;
 
-  constructor(private userService: UserService) {
+  constructor() {
   }
 
   ngOnInit(): void {
