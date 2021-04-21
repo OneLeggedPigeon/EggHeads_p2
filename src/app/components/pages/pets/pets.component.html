@@ -1,6 +1,17 @@
 
 <h2 style = "margin-left: 10px">My Pets</h2>
+
+<div style ="margin-left: 10px; font-size: 20px;" *ngIf='!pets.length'> You don't have any pet, but you can always hatch some eggs with our app!
+    <br>
+    <p>Click on this sad doge to visit r/aww </p>
+    <a href="https://www.reddit.com/r/aww/" target="_blank">
+        <img alt="sad dog" src="https://lrwonline.com/wp-content/uploads/2019/03/BLOG-Sad-Dog-1200x900-1200x900.jpg"
+        width="540" height="405">
+     </a>
+    </div>
+
 <div class="wrap">
+
     <div class="fleft">
         <mat-card class="card-style" *ngFor="let pet of pets">
             <mat-card-header>
