@@ -10,6 +10,7 @@ import { EggTemplateService } from 'src/app/services/egg-template.service';
 export class NewTemplateComponent implements OnInit {
   id!: number;
   name!: string;
+  animal!: string;
   incubationPeriod!: number;
   size!: number;
   redVal!: number;
@@ -26,6 +27,7 @@ export class NewTemplateComponent implements OnInit {
       // hardcode in an id or nah? how to set?
       id: this.id,
       eggTemplateName: this.name,
+      animalType: this.animal,
       incubationPeriod: this.incubationPeriod,
       size: this.size,
       redValue: this.redVal,

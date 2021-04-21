@@ -8,9 +8,13 @@
           <mat-form-field class="example-full-width">
             <input matInput type="text" [(ngModel)]="name" name="name" placeholder="Name">
           </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="text" [(ngModel)]="animal" name="animal" placeholder="Animal">
+          </mat-form-field>
   
           <mat-form-field class="example-full-width">
-            <input matInput type="number" [(ngModel)]="incubationPeriod" name="incubationPeriod" placeholder="Incubation period">
+            <input matInput type="number" [(ngModel)]="incubationPeriod" name="incubationPeriod" placeholder="Incubation Period (Hours)">
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
@@ -35,7 +39,7 @@
 
     <mat-card class="box2">
       <mat-card-header>
-        <mat-card-title>New Template Preview</mat-card-title>
+        <mat-card-title *ngIf='name && animal'>{{name}}, a template for {{animal}} Eggs</mat-card-title>
       </mat-card-header>
       <app-egg [size]="size" [red]="redVal" [green]="greenVal" [blue]="blueVal"></app-egg>
     </mat-card>
