@@ -8,3 +8,8 @@ body {
   flex: 1 1 auto;
   text-align: center;
 }
+
+.mat-toolbar.mat-primary {
+  background:#424242;
+  color: #fff;
+}
