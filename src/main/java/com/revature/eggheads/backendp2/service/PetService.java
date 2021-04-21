@@ -76,9 +76,11 @@ public class PetService {
     public Pet removePetFromUser(Integer userId, Integer petId) {
         Pet pet = petRepository.findById(petId).orElse(null);
         // don't delete pet if given the wrong userId
-        if (pet != null && pet.getUser().getId() == userId) {
-            petRepository.delete(pet);
-            pet = null;
+        if (pet != null) {
+            if (pet.getUser().getId() == userId)
+                petRepository.delete(pet);
+            else
+                pet = null;
         }
         return pet;
     }
