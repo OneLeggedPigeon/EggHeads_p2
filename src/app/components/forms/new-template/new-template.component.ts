@@ -35,7 +35,7 @@ export class NewTemplateComponent implements OnInit {
       blueValue: this.blueVal
     }
 
-    this.templateService.addEggTemplate(template);
+    this.templateService.addEggTemplate(template).subscribe();
     console.log("created, maybe");
   }
 
