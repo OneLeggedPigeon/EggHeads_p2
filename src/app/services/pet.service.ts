@@ -12,13 +12,25 @@ import { MessageService } from './message.service';
 })
 export class PetService {
 
+  storage:Storage = localStorage;
+
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
+    ,'Authorization': `Bearer ${this.storage.getItem("token")}`
   })
 
   dev:string = 'http://localhost:9000';
   cors:string = 'https://cors.io/?'
+<<<<<<< HEAD
   prod:string = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/pet';
+=======
+  prod:string = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com';
+  get:string = '/pet/';
+
+  getAllUrlDev:string = `${this.dev}${this.get}`
+  getAllUrl:string = `${this.prod}${this.get}`
+
+>>>>>>> 130c0e744cb66fa20205c99af1695802a4c3eee5
 
   constructor(
     private http:HttpClient,
@@ -27,8 +39,13 @@ export class PetService {
 
   /** GET Pets of current user */
   getPets(): Observable<Pet[]> {
+<<<<<<< HEAD
     let id = localStorage.getItem("user-id");
     const url = `${this.prod}/${id}`;
+=======
+    let id = this.storage.getItem("user-id");
+    const url = `${this.getAllUrl}${id}`;
+>>>>>>> 130c0e744cb66fa20205c99af1695802a4c3eee5
     return this.http.get<Pet[]>(url,{
         headers: this.headers
       }).pipe(
@@ -39,10 +56,15 @@ export class PetService {
   
   /** GET Pet of current user */
   getPet(petId:number): Observable<Pet> {
+<<<<<<< HEAD
     let id = localStorage.getItem("user-id");
     const params = new HttpParams()
       .set("pet-id", petId.toString());
     const url = `${this.prod}/${id}?${params.toString()}`;
+=======
+    let id = this.storage.getItem("user-id");
+    const url = `${this.getAllUrl}${id}`;
+>>>>>>> 130c0e744cb66fa20205c99af1695802a4c3eee5
     return this.http.get<Pet>(url,{
         headers: this.headers
       }).pipe(
@@ -53,12 +75,18 @@ export class PetService {
 
   /** POST new Pet to current user */
   addPetFromEgg(egg: Egg, name: string): Observable<Pet> {
+<<<<<<< HEAD
     let id = localStorage.getItem("user-id");
     const params = new HttpParams()
       .set("egg-id", egg.id!.toString())
       .set("name", name);
     const url = `${this.prod}/${id}?${params.toString()}`;
     return this.http.post<Pet>(url,{
+=======
+    let id = this.storage.getItem("user-id");
+    const url = `${this.getAllUrl}${id}`;
+    return this.http.get<Pet>(url,{
+>>>>>>> 130c0e744cb66fa20205c99af1695802a4c3eee5
         headers: this.headers,
       }).pipe(
       tap(_ => this.log(`added Pet ${name} to User id=${id} using Egg id=${egg.id!.toString()}`)),
