@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+
 <h2 style = "margin-left: 10px">My Pets</h2>
 <div class="wrap">
     <div class="fleft">
@@ -9,13 +9,13 @@
             </mat-card-header>
 
             <mat-card-actions>
-                <button class="button-style" 
+                <button class="button-style"
                 mat-button [class.selected]="pet === selectedPet"
                 (click)="onSelect(pet)"
                 mat-raised-button color="primary">
                 Details</button>
 
-                <button class="button-style" 
+                <button class="button-style"
                 mat-button [class.selected]="pet === selectedPet"
                 (click)="abandon(pet)"
                 mat-raised-button color="primary"
@@ -39,7 +39,7 @@
                 <mat-divider></mat-divider>
                 <mat-list-item class="mat-list-style">Owner: {{owner}}</mat-list-item>
                 <mat-divider></mat-divider>
-                
+
             </mat-list>
         </div>
     </div>

@@ -1,17 +1,20 @@
-<app-navbar></app-navbar>
+
 <div class='centered-page-wrapper'>
-    <mat-grid-list cols="2" rowHeight="4:3">
-        <mat-grid-tile>
-            <p>test</p>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <p>test</p>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <p>test</p>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <p>test</p>
-        </mat-grid-tile>
-    </mat-grid-list>
+  <div>
+    <h1>Dashboard</h1>
+    <mat-grid-list cols="2" rowHeight="4:3" gutterSize="30px;">
+      <mat-grid-tile class="mat-elevation-z10">
+          <app-incubator></app-incubator>
+      </mat-grid-tile>
+      <mat-grid-tile class="mat-elevation-z10">
+          <app-pets></app-pets>
+      </mat-grid-tile>
+      <mat-grid-tile class="mat-elevation-z10">
+          <app-market></app-market>
+      </mat-grid-tile>
+      <mat-grid-tile class="mat-elevation-z10">
+          <app-templates></app-templates>
+      </mat-grid-tile>
+  </mat-grid-list>
+  </div>
 </div>

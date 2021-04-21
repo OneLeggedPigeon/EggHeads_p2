@@ -91,7 +91,8 @@ body {
 
 .centered-page-wrapper {
   min-width: 600px;
-  max-width: 1200px;
+  max-width: 1400px;
+  padding: 30px;
   margin: 0 auto;
 }
 
@@ -117,3 +118,8 @@ body {
 }
 
 
+body {
+  background-image: url("https://images.pexels.com/photos/6898856/pexels-photo-6898856.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
