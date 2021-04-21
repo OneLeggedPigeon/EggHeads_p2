@@ -19,7 +19,7 @@ public class Incubator {
     @GeneratedValue
     private int id;
 
-    private int capacity = 10;
+    private int capacity = 9;
 
     @OneToMany(mappedBy = "incubator", orphanRemoval = true)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
