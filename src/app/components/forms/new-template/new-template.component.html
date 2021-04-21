@@ -37,6 +37,8 @@
       <mat-card-header>
         <mat-card-title>New Template Preview</mat-card-title>
       </mat-card-header>
+      {{ this.redVal }}
+      <app-egg [size]="this.size" [red]="this.redVal" [green]="this.greenVal" [blue]="this.blueVal"></app-egg>
       <img mat-card-image class="image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
     </mat-card>
   </div>
