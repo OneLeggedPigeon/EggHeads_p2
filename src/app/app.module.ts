@@ -19,9 +19,12 @@ import { UserService } from './services/user.service';
 import { EggTemplateComponent } from './components/objects/egg_template/egg_template.component';
 import { IncubatorPreviewComponent } from './components/objects/incubator-preview/incubator-preview.component';
 import { EggComponent } from './components/objects/egg/egg.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { ContributorsComponent } from './components/contributors/contributors.component';
 import { MarketComponent } from './components/pages/market/market.component';
 import { MarketEggComponent } from './components/objects/market-egg/market-egg.component';
 import { IncubatorEggComponent } from './components/objects/incubator-egg/incubator-egg.component';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { IncubatorEggComponent } from './components/objects/incubator-egg/incuba
     EggTemplateComponent,
     IncubatorPreviewComponent,
     EggComponent,
+    HomeComponent,
+    ContributorsComponent,
     MarketComponent,
     MarketEggComponent,
     IncubatorEggComponent
