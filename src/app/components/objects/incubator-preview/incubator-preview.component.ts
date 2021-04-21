@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Egg } from 'src/app/models/egg';
+import { Incubator } from 'src/app/models/incubator';
 import { EggTemplateService } from 'src/app/services/egg-template.service';
+import { IncubatorService } from 'src/app/services/incubator.service';
 
 @Component({
   selector: 'app-incubator-preview',
@@ -10,16 +12,15 @@ import { EggTemplateService } from 'src/app/services/egg-template.service';
 })
 export class IncubatorPreviewComponent implements OnInit {
   eggs:Egg[] = [];
-  imageSize!:string;
 
-  constructor(private eggTemplateService: EggTemplateService) { }
+  constructor(private incubatorService: IncubatorService) { }
 
   ngOnInit(): void {
     this.getEggs();
   }
 
   getEggs(): void {
-    this.eggTemplateService.getEggs()
-      .subscribe(eggs => this.eggs = eggs);
+    this.incubatorService.getIncubator()
+      .subscribe(incubator => this.eggs = incubator.eggs);
   }
 }

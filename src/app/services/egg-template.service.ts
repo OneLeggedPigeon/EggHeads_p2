@@ -3,73 +3,91 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Egg } from '../models/egg'
-import { EGGS } from '../mock/mock-eggs';
-import { UserService } from './user.service'
-
+import { Egg } from '../models/egg';
+import { EggTemplate } from '../models/egg-template';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EggTemplateService {
 
-  private eggsUrl = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/incubator';  // URL to web api
-  
+  private eggTemplateUrl = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/egg_template';  // URL to web api
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private messageService: MessageService
   ) { }
   
-  /** GET Egges from the server */
-  getEggs(): Observable<Egg[]> {
-    return this.http.get<Egg[]>(this.EggesUrl)
+  /** GET EggTemplates from the server */
+  getEggTemplates(): Observable<EggTemplate[]> {
+    return this.http.get<EggTemplate[]>(this.eggTemplateUrl, this.httpOptions)
       .pipe(
-        tap(_ => this.log('fetched Egges')),
-        catchError(this.handleError<Egg[]>('getEgges', []))
+        tap(_ => this.log('fetched EggTemplates')),
+        catchError(this.handleError<EggTemplate[]>('getEggTemplates', []))
       );
   }
 
-  /** GET Egg by id. Will 404 if id not found */
-  getEgg(id: number): Observable<Egg> {
-    const url = `${this.EggesUrl}/${id}`;
-    return this.http.get<Egg>(url).pipe(
-      tap(_ => this.log(`fetched Egg id=${id}`)),
-      catchError(this.handleError<Egg>(`getEgg id=${id}`))
+  /** GET EggTemplate by id. Will 404 if id not found */
+  getEggTemplate(id: number): Observable<EggTemplate> {
+    const url = `${this.eggTemplateUrl}/${id}`;
+    return this.http.get<EggTemplate>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`fetched Template id=${id}`)),
+      catchError(this.handleError<EggTemplate>(`getEggTemplate id=${id}`))
+    );
+  }
+  
+
+  /** GET Eggs, one from each existing template */
+  getRandomEggsFromTemplates(): Observable<Egg[]> {
+    const url = `${this.eggTemplateUrl}/market`;
+    return this.http.get<Egg[]>(url, this.httpOptions).pipe(
+      tap(_ => this.log('fetched Eggs')),
+      catchError(this.handleError<Egg[]>(`getRandomEggsFromTemplates`, []))
     );
   }
 
-  /** PUT: update the Egg on the server */
-  updateEgg(Egg: Egg): Observable<any> {
-    return this.http.put(this.EggesUrl, Egg, this.httpOptions).pipe(
-      tap(_ => this.log(`updated Egg id=${Egg.id}`)),
-      catchError(this.handleError<any>('updateEgg'))
+  /** GET Eggs, 'count' of them, from different templates unless count is higher than the number of templates */
+  getRandomEggsFromTemplate(count: number): Observable<Egg[]> {
+    const url = `${this.eggTemplateUrl}/market/${count}`;
+    return this.http.get<Egg[]>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`fetched ${count} Eggs`)),
+      catchError(this.handleError<Egg[]>(`getRandomEggsFromTemplate count=${count}`))
     );
   }
 
-  /** POST: add a new Egg to the server */
-  addEgg(Egg: Egg): Observable<Egg> {
-    return this.http.post<Egg>(this.EggesUrl, Egg, this.httpOptions).pipe(
-      tap((newEgg: Egg) => this.log(`added Egg w/ id=${newEgg.id}`)),
-      catchError(this.handleError<Egg>('addEgg'))
+  // /** PUT: update the EggTemplate on the server */
+  // updateEggTemplatee(eggTemplate: EggTemplate): Observable<any> {
+  //   return this.http.put(this.eggTemplateUrl, eggTemplate, this.httpOptions).pipe(
+  //     tap(_ => this.log(`updated EggTemplate id=${eggTemplate.id}`)),
+  //     catchError(this.handleError<any>('updateEggTemplatee'))
+  //   );
+  // }
+
+  /** POST: add a new Template to the server */
+  addEggTemplate(eggTemplate: EggTemplate): Observable<EggTemplate> {
+    return this.http.post<EggTemplate>(this.eggTemplateUrl, eggTemplate, this.httpOptions).pipe(
+      tap((newTemplate: EggTemplate) => this.log(`added EggTemplate id=${newTemplate.id}`)),
+      catchError(this.handleError<EggTemplate>('addEggTemplate'))
     );
   }
 
-  /** DELETE: delete the Egg from the server */
-  deleteEgg(id: number): Observable<Egg> {
-    const url = `${this.EggesUrl}/${id}`;
-
-    return this.http.delete<Egg>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted Egg id=${id}`)),
-      catchError(this.handleError<Egg>('deleteEgg'))
+  /** DELETE: delete the Template from the server */
+  deleteEggTemplate(id: number): Observable<EggTemplate> {
+    const url = `${this.eggTemplateUrl}/${id}`;
+    return this.http.delete<EggTemplate>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted EggTemplate id=${id}`)),
+      catchError(this.handleError<EggTemplate>('deleteEggTemplate'))
     );
   }
 
-  /** Log a EggService message with the MessageService */
+  /** Log a TemplateService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`EggService: ${message}`);
+    this.messageService.add(`TemplateService: ${message}`);
   }
 
   /**
