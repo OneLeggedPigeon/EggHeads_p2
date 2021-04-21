@@ -9,7 +9,7 @@ body {
   text-align: center;
 }
 
-.mat-toolbar.mat-primary {
-  background:#424242;
+.mat-toolbar.mat-basic {
+  background:#383838;
   color: #fff;
 }
