@@ -6,6 +6,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { IncubatorComponent } from './components/pages/incubator/incubator.component';
 import { PetsComponent } from './components/pages/pets/pets.component';
 import { TemplatesComponent } from './components/pages/templates/templates.component';
+import { MarketComponent } from './components/pages/market/market.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'templates', component: TemplatesComponent, canActivate:[AuthGuardService]},
   { path: 'incubator', component: IncubatorComponent, canActivate:[AuthGuardService]},
   { path: 'pets', component: PetsComponent, canActivate:[AuthGuardService]},
-
+  { path: 'market', component: MarketComponent, canActivate:[AuthGuardService]}
 ];
 
 @NgModule({

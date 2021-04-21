@@ -21,6 +21,9 @@ import { IncubatorPreviewComponent } from './components/objects/incubator-previe
 import { EggComponent } from './components/objects/egg/egg.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { ContributorsComponent } from './components/contributors/contributors.component';
+import { MarketComponent } from './components/pages/market/market.component';
+import { MarketEggComponent } from './components/objects/market-egg/market-egg.component';
+import { IncubatorEggComponent } from './components/objects/incubator-egg/incubator-egg.component';
 
 
 @NgModule({
@@ -37,6 +40,9 @@ import { ContributorsComponent } from './components/contributors/contributors.co
     EggComponent,
     HomeComponent,
     ContributorsComponent,
+    MarketComponent,
+    MarketEggComponent,
+    IncubatorEggComponent
   ],
   imports: [
     BrowserModule,
