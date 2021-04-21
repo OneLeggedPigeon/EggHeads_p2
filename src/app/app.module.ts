@@ -19,6 +19,7 @@ import { UserService } from './services/user.service';
 import { EggTemplateComponent } from './components/objects/egg_template/egg_template.component';
 import { IncubatorPreviewComponent } from './components/objects/incubator-preview/incubator-preview.component';
 import { EggComponent } from './components/objects/egg/egg.component';
+import { MarketComponent } from './components/pages/market/market.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EggComponent } from './components/objects/egg/egg.component';
     PetsComponent,
     EggTemplateComponent,
     IncubatorPreviewComponent,
-    EggComponent
+    EggComponent,
+    MarketComponent
   ],
   imports: [
     BrowserModule,
