@@ -6,7 +6,7 @@
     <mat-grid-tile-footer *ngIf='egg.ready'>
         <div>
             <label for="pet-name">Give your pet a name: </label>
-            <input id="pet-name" [(ngModel)]="name" placeholder="Fluffles">
+            <input id="pet-name" [(ngModel)]="name" placeholder="Pet Name">
         </div>
         <div>
             <button *ngIf='name' (click)='hatch()'>Hatch!</button>
