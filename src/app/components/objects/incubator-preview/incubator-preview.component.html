@@ -1,3 +1,4 @@
+<div *ngIf='!eggs.length && loaded'>You have no eggs :(</div>
 <mat-grid-list cols="3" rowHeight="1:1">
     <mat-grid-tile *ngFor='let egg of eggs'>
         <app-egg [egg]='egg'></app-egg>
