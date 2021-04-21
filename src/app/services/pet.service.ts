@@ -39,7 +39,7 @@ export class PetService {
         catchError(this.handleError<Pet[]>(`getPets`, []))
       );
   }
-  
+
   /** GET Pet of current user */
   getPet(petId:number): Observable<Pet> {
     let id = localStorage.getItem("user-id");
