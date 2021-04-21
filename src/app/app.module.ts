@@ -24,6 +24,10 @@ import { MarketComponent } from './components/pages/market/market.component';
 import { MarketEggComponent } from './components/objects/market-egg/market-egg.component';
 import { IncubatorEggComponent } from './components/objects/incubator-egg/incubator-egg.component';
 import { NewTemplateComponent } from './components/forms/new-template/new-template.component';
+import { IncubatorDashboardComponent } from './components/pages/dashboard/incubator-dashboard/incubator-dashboard.component';
+import { PetDashboardComponent } from './components/pages/dashboard/pet-dashboard/pet-dashboard.component';
+import { MarketDashboardComponent } from './components/pages/dashboard/market-dashboard/market-dashboard.component';
+import { TemplateDashboardComponent } from './components/pages/dashboard/template-dashboard/template-dashboard.component';
 
 
 @NgModule({
@@ -43,6 +47,10 @@ import { NewTemplateComponent } from './components/forms/new-template/new-templa
     MarketEggComponent,
     IncubatorEggComponent,
     NewTemplateComponent,
+    IncubatorDashboardComponent,
+    PetDashboardComponent,
+    MarketDashboardComponent,
+    TemplateDashboardComponent,
   ],
   imports: [
     BrowserModule,
