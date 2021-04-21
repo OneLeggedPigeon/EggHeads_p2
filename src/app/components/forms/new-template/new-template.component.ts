@@ -36,7 +36,6 @@ export class NewTemplateComponent implements OnInit {
     }
 
     this.templateService.addEggTemplate(template).subscribe();
-    console.log("created, maybe");
   }
 
 }
