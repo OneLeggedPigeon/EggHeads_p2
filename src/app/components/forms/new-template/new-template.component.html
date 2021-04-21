@@ -1,0 +1,44 @@
+<div class="new-template-wrapper" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="left center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Create New Template</mat-card-title>
+      </mat-card-header>
+      <form class="example-form">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput type="text" [(ngModel)]="name" name="name" placeholder="Name">
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" [(ngModel)]="incubationPeriod" name="incubationPeriod" placeholder="Incubation period">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" [(ngModel)]="size" name="size" placeholder="Size">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" [(ngModel)]="redVal" name="redVal" placeholder="Red value">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" [(ngModel)]="greenVal" name="greenVal" placeholder="Green value">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" [(ngModel)]="blueVal" name="blueVal" placeholder="Blue value">
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-raised-button color="primary" class="btn-block" (click)="onCreate()">Create</button>
+      </form>
+    </mat-card>
+
+    <mat-card class="box2">
+      <mat-card-header>
+        <mat-card-title>New Template Preview</mat-card-title>
+      </mat-card-header>
+      {{ this.redVal }}
+      <app-egg [size]="this.size" [red]="this.redVal" [green]="this.greenVal" [blue]="this.blueVal"></app-egg>
+      <img mat-card-image class="image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    </mat-card>
+  </div>
