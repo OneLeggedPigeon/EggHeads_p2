@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Egg } from '../models/egg';
 
 import { Pet } from '../models/Pet';
 import { MessageService } from './message.service';
@@ -11,35 +12,86 @@ import { MessageService } from './message.service';
 })
 export class PetService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }
+  storage:Storage = localStorage;
+
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+    ,'Authorization': `Bearer ${this.storage.getItem("token")}`
+  })
 
   dev:string = 'http://localhost:9000';
   cors:string = 'https://cors.io/?'
+<<<<<<< HEAD
+  prod:string = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/pet';
+=======
   prod:string = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com';
-  get:string = '/pet';
-  getById:string = '/pet/{user-id}';
-  getByIdFR:string ='/pet/48';
+  get:string = '/pet/';
+
   getAllUrlDev:string = `${this.dev}${this.get}`
   getAllUrl:string = `${this.prod}${this.get}`
-  getByIdUrl:string = `${this.prod}${this.getById}`
 
-  getByIdUrlTesting:string = `${this.prod}${this.getByIdFR}`
+>>>>>>> 130c0e744cb66fa20205c99af1695802a4c3eee5
 
   constructor(
     private http:HttpClient,
     private messageService: MessageService
   ) { }
 
+  /** GET Pets of current user */
   getPets(): Observable<Pet[]> {
-    return this.http.get<Pet[]>(
-      this.getByIdUrlTesting).pipe(
+<<<<<<< HEAD
+    let id = localStorage.getItem("user-id");
+    const url = `${this.prod}/${id}`;
+=======
+    let id = this.storage.getItem("user-id");
+    const url = `${this.getAllUrl}${id}`;
+>>>>>>> 130c0e744cb66fa20205c99af1695802a4c3eee5
+    return this.http.get<Pet[]>(url,{
+        headers: this.headers
+      }).pipe(
         tap(_ => this.log(`fetched Pets`)),
         catchError(this.handleError<Pet[]>(`getPets`, []))
       );
+  }
+  
+  /** GET Pet of current user */
+  getPet(petId:number): Observable<Pet> {
+<<<<<<< HEAD
+    let id = localStorage.getItem("user-id");
+    const params = new HttpParams()
+      .set("pet-id", petId.toString());
+    const url = `${this.prod}/${id}?${params.toString()}`;
+=======
+    let id = this.storage.getItem("user-id");
+    const url = `${this.getAllUrl}${id}`;
+>>>>>>> 130c0e744cb66fa20205c99af1695802a4c3eee5
+    return this.http.get<Pet>(url,{
+        headers: this.headers
+      }).pipe(
+        tap(_ => this.log(`fetched Pet id=${petId}`)),
+        catchError(this.handleError<Pet>(`getPet`))
+      );
+  }
+
+  /** POST new Pet to current user */
+  addPetFromEgg(egg: Egg, name: string): Observable<Pet> {
+<<<<<<< HEAD
+    let id = localStorage.getItem("user-id");
+    const params = new HttpParams()
+      .set("egg-id", egg.id!.toString())
+      .set("name", name);
+    const url = `${this.prod}/${id}?${params.toString()}`;
+    return this.http.post<Pet>(url,{
+=======
+    let id = this.storage.getItem("user-id");
+    const url = `${this.getAllUrl}${id}`;
+    return this.http.get<Pet>(url,{
+>>>>>>> 130c0e744cb66fa20205c99af1695802a4c3eee5
+        headers: this.headers,
+      }).pipe(
+      tap(_ => this.log(`added Pet ${name} to User id=${id} using Egg id=${egg.id!.toString()}`)),
+      catchError(this.handleError<Pet>(`addPetFromEgg`))
+    );
   }
 
   /** Log a IncubatorService message with the MessageService */

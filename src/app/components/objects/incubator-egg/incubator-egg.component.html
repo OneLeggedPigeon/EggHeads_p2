@@ -3,4 +3,13 @@
         Egg {{egg.id}}: Incubating for {{hoursHatching.toFixed(1)}} hours.
     </mat-grid-tile-header>
     <app-egg [size]='egg.currentSize' [red]='egg.redValue' [green]='egg.greenValue' [blue]='egg.blueValue'></app-egg>
+    <mat-grid-tile-footer *ngIf='egg.ready'>
+        <div>
+            <label for="pet-name">Give your pet a name: </label>
+            <input id="pet-name" [(ngModel)]="name" placeholder="Pet Name">
+        </div>
+        <div>
+            <button *ngIf='name' (click)='hatch()'>Hatch!</button>
+        </div>
+    </mat-grid-tile-footer>
 </div>
