@@ -4,9 +4,10 @@
     margin-bottom: 5px;
   }
 .button-style{
-    position: absolute;
-    right:    10px;
-    bottom:   10px;
+    float: right;
+    position: relative;
+    right:    .5em;
+    bottom:   3em;
 }
 
 .wrap {

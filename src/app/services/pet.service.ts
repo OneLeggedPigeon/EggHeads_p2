@@ -69,6 +69,20 @@ export class PetService {
     );
   }
 
+  /** DELETE Pet of current user */
+  removePet(petId:number): Observable<Pet> {
+    let id = localStorage.getItem("user-id");
+    const params = new HttpParams()
+      .set("pet-id", petId.toString());
+    const url = `${this.prod}/${id}?${params.toString()}`;
+    return this.http.delete<Pet>(url,{
+        headers: this.headers
+      }).pipe(
+        tap(_ => this.log(`fetched Pet id=${petId}`)),
+        catchError(this.handleError<Pet>(`getPet`))
+      );
+  }
+
   /** Log a IncubatorService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`IncubatorService: ${message}`);
