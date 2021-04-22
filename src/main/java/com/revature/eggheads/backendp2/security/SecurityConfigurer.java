@@ -43,7 +43,6 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**", "/v3/api-docs/**").permitAll()
                 .antMatchers("/user/create").permitAll()
                 .antMatchers("/actuator/health").permitAll()
-                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
