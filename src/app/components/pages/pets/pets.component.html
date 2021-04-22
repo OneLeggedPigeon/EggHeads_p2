@@ -29,7 +29,7 @@
                 mat-button [class.selected]="pet === selectedPet"
                 (click)="toConfirm(pet)"
                 mat-raised-button color="primary"
-                style='background-color: darkred;'>
+                style='background-color: #000000;'>
                 Abandon</button>
             </mat-card-actions>
         </mat-card>
@@ -37,10 +37,12 @@
     <div class="fright">
         <div  *ngIf="selectedPet">
 
-            <h2>{{selectedPet.name}} the {{selectedPet.petAdjective | titlecase}} {{selectedPet.animalType | titlecase}}</h2>
-            <mat-list>
+            <mat-list style="background-color: #0066cc; max-width: 500px;">
+                
+                <mat-list-item class="mat-list-style" style="font-size: large;">{{selectedPet.name | uppercase}} the {{selectedPet.petAdjective | titlecase}} {{selectedPet.animalType | titlecase}}</mat-list-item>
+                <mat-divider></mat-divider>
                 <mat-list-item class="mat-list-style">Name: {{selectedPet.name}}</mat-list-item>
-                <mat-divider vertical style="height: 5px;"></mat-divider>
+                <mat-divider></mat-divider>
                 <mat-list-item class="mat-list-style">ID: {{selectedPet.id}}</mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item class="mat-list-style">Species: {{selectedPet.animalType | titlecase}}</mat-list-item>
