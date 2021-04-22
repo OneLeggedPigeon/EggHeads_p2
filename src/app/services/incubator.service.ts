@@ -13,9 +13,11 @@ import { MessageService } from './message.service';
 export class IncubatorService {
 
   private incubatorUrl = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/incubator';
-  headers = new HttpHeaders({ 
-    'Content-Type': 'application/json'
-  })
+  
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem("token")}`
+  });
 
   constructor(
     private http: HttpClient,

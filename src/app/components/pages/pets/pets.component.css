@@ -1,5 +1,5 @@
 .card-style {
-    margin-left: 10px;
+    
     max-width: 400px;
     margin-bottom: 5px;
   }
@@ -10,23 +10,24 @@
     bottom:   3em;
 }
 
-.wrap {
-    width: 100%;
-    overflow:auo;
-    }
+.centered-page-wrapper {
+    max-width:1300px;
+}
     
 .fleft {
+
     float:left; 
     width: 40%;
     height: 400px;
 }
     
 .fright {
-float: right;
+
+    float: right;
     height: 400px;
     width: 60%;
 }
     
 .mat-list-style{
-    color:black;
+    color:white;
 }

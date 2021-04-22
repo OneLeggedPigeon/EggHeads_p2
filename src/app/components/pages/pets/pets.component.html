@@ -1,16 +1,15 @@
-
-<h2 style = "margin-left: 10px">My Pets</h2>
-
-<div style ="margin-left: 10px; font-size: 20px;" *ngIf='!pets.length'> You don't have any pet, but you can always hatch some eggs with our app!
-    <br>
-    <p>Click on this sad doge to visit r/aww </p>
-    <a href="https://www.reddit.com/r/aww/" target="_blank">
-        <img alt="sad dog" src="https://lrwonline.com/wp-content/uploads/2019/03/BLOG-Sad-Dog-1200x900-1200x900.jpg"
-        width="540" height="405">
-     </a>
+<div class="centered-page-wrapper">
+    <div style ="margin-left: 10px; font-size: 20px;" *ngIf='!pets.length'> You don't have any pet, but you can always hatch some eggs with our app!
+        <br>
+        <p>Click on this sad doge to visit r/aww </p>
+        <a href="https://www.reddit.com/r/aww/" target="_blank">
+            <img alt="sad dog" src="https://lrwonline.com/wp-content/uploads/2019/03/BLOG-Sad-Dog-1200x900-1200x900.jpg"
+            width="540" height="405">
+         </a>
+        </div>
+    <div style = "margin-left: 10px" *ngIf='pets.length'>
+        <h2>My Pets</h2>
     </div>
-
-<div class="wrap">
 
     <div class="fleft">
         <mat-card class="card-style" *ngFor="let pet of pets">
@@ -28,9 +27,9 @@
 
                 <button class="button-style"
                 mat-button [class.selected]="pet === selectedPet"
-                (click)="abandon(pet)"
+                (click)="toConfirm(pet)"
                 mat-raised-button color="primary"
-                style='background-color: darkred;'>
+                style='background-color: #000000;'>
                 Abandon</button>
             </mat-card-actions>
         </mat-card>
@@ -38,10 +37,12 @@
     <div class="fright">
         <div  *ngIf="selectedPet">
 
-            <h2>{{selectedPet.name}} the {{selectedPet.petAdjective | titlecase}} {{selectedPet.animalType | titlecase}}</h2>
-            <mat-list>
+            <mat-list  style="background-color: #333333e7; max-width: 500px;">
+                
+                <mat-list-item class="mat-list-style" style="font-size: large; color:#cc0066 ;">{{selectedPet.name | uppercase}} the {{selectedPet.petAdjective | titlecase}} {{selectedPet.animalType | titlecase}}</mat-list-item>
+                <mat-divider></mat-divider>
                 <mat-list-item class="mat-list-style">Name: {{selectedPet.name}}</mat-list-item>
-                <mat-divider vertical style="height: 5px;"></mat-divider>
+                <mat-divider></mat-divider>
                 <mat-list-item class="mat-list-style">ID: {{selectedPet.id}}</mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item class="mat-list-style">Species: {{selectedPet.animalType | titlecase}}</mat-list-item>
@@ -53,8 +54,5 @@
 
             </mat-list>
         </div>
-    </div>
-    <div class='abandoned-message' *ngIf='petRemoved'>
-        <p>Farewell, {{abandonedPet?.name}}.</p>
     </div>
 </div>

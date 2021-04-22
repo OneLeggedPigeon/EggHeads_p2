@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EggTemplate } from 'src/app/models/egg-template';
 import { EggTemplateService } from 'src/app/services/egg-template.service';
 
@@ -17,7 +18,10 @@ export class NewTemplateComponent implements OnInit {
   greenVal!: number;
   blueVal!: number;
 
-  constructor(private templateService:EggTemplateService) { }
+  constructor(
+    private templateService:EggTemplateService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -36,6 +40,7 @@ export class NewTemplateComponent implements OnInit {
     }
 
     this.templateService.addEggTemplate(template).subscribe();
+    this.router.navigateByUrl('/dashboard');
   }
 
 }
