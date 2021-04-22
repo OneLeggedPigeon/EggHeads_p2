@@ -25,9 +25,11 @@ export class IncubatorDashboardComponent implements OnInit {
   getEggs(): void {
     this.incubatorService.getIncubator()
       .subscribe(incubator => {
-        this.eggs = incubator.eggs;
-        this.previewEggs = incubator.eggs.slice(0, 9);
-        this.hatchableEggs = this.eggs.filter(this.setHatchable);
+        if(incubator.eggs){
+          this.eggs = incubator.eggs;
+          this.previewEggs = incubator.eggs.slice(0, 9);
+          this.hatchableEggs = this.eggs.filter(this.setHatchable);
+        }
         this.loaded = true;
       });
   }

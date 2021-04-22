@@ -6,7 +6,7 @@
         </div>
         <h1 *ngIf='!eggs.length && loaded'>You have no eggs :(</h1>
     </div>
-    <div class='hatching-preview'>
+    <div class='hatching-preview' *ngIf='eggs.length && loaded'>
         <h1>Hatching Status:</h1>
         <h2 *ngIf='!hatchableEggs'>No Eggs are ready to hatch at this time.</h2>
         <h2 *ngFor='let egg of hatchableEggs'>Egg {{egg.id}} is ready to hatch!</h2>
