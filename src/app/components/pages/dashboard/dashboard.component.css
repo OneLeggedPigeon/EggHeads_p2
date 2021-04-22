@@ -6,10 +6,3 @@
     background:#333333e7;
   color: #fff;
 }
-
-.centered-page-wrapper {
-  min-width: 800px;
-  max-width: 2000px;
-  padding: 30px;
-  margin: 0 auto;
-}
