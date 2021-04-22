@@ -94,7 +94,6 @@ body {
   max-width: 1400px;
   padding: 30px;
   margin: 0 auto;
-  overflow:auto;
 }
 
 .login-wrapper mat-card-header {
