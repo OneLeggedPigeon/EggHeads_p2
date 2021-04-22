@@ -90,9 +90,9 @@ body {
 }
 
 .centered-page-wrapper {
-  min-width: 600px;
+  min-width: 900px;
   max-width: 1400px;
-  padding: 30px;
+  padding: 20px;
   margin: 0 auto;
 }
 

@@ -42,4 +42,23 @@ export class PetsComponent implements OnInit {
 
   reload(): void {
   }
+
+  toConfirm(pet: Pet){
+    var name = pet.name;
+    var answer = confirm("ARE YOU SURE???");
+    if (answer == true){
+        this.abandon(pet);
+        this.refreshPage();
+        this.yeeted(name);
+    }
+  }
+
+  refreshPage(){
+    window.location.reload();
+  }
+
+  yeeted(name: String) {
+    alert(
+    `${name} has been yeeted, hope you said goodbye :(`);
+  }
 }
