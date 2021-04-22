@@ -14,7 +14,7 @@ import java.nio.file.attribute.UserPrincipalNotFoundException;
 
 @RestController
 @RequestMapping("/incubator")
-@CrossOrigin(origins = {"http://localhost:4200", "http://egghead-p2-angular.s3-website.us-east-2.amazonaws.com"})
+@CrossOrigin(origins = "*")
 public class IncubatorController {
 
     private IncubatorService incubatorService;

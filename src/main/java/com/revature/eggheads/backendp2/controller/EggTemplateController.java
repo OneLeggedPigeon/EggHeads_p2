@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/egg_template")
-@CrossOrigin(origins = {"http://localhost:4200", "http://egghead-p2-angular.s3-website.us-east-2.amazonaws.com"})
+@CrossOrigin(origins = "*")
 public class EggTemplateController {
 
     private EggTemplateRepository repo;

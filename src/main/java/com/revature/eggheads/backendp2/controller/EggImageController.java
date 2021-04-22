@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 @RestController
 @RequestMapping("image/egg")
-@CrossOrigin(origins = {"http://localhost:4200", "http://egghead-p2-angular.s3-website.us-east-2.amazonaws.com"})
+@CrossOrigin(origins = "*")
 public class EggImageController {
 
     private EggImageService eggImageService;
