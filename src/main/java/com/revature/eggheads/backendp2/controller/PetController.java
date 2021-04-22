@@ -43,9 +43,13 @@ public class PetController {
         return petService.addPetToUser(Integer.parseInt(userId), Integer.parseInt(eggId), name);
     }
 
-    @DeleteMapping
+    /**
+     *
+     * @return the Pet that was deleted, or null if no Pet was deleted
+     */
+    @DeleteMapping("/{user-id}")
     public @ResponseBody
-    User removePetFromUser(@RequestParam("user-id") String userId, @RequestParam("egg-id") String eggId){
-        return petService.removePetFromUser(Integer.valueOf(userId), Integer.valueOf(eggId));
+    Pet removePetFromUser(@PathVariable("user-id") String userId, @RequestParam("pet-id") String petId){
+        return petService.removePetFromUser(Integer.valueOf(userId), Integer.valueOf(petId));
     }
 }

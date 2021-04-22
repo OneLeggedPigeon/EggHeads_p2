@@ -43,15 +43,15 @@ public class IncubatorController {
      * @param egg an Egg to be added to the database
      * @return the incubator the egg is added to
      */
-    @PostMapping
+    @PostMapping("/{user-id}")
     public @ResponseBody
-    Incubator addEggToIncubator(@RequestParam("user-id") String userId, @RequestBody Egg egg){
+    Incubator addEggToIncubator(@PathVariable("user-id") String userId, @RequestBody Egg egg){
         return incubatorService.addEggToIncubator(Integer.valueOf(userId), egg);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{user-id}")
     public @ResponseBody
-    Incubator removeEggFromIncubator(@RequestParam("user-id") String userId, @RequestParam("egg-id") String eggId){
+    Incubator removeEggFromIncubator(@PathVariable("user-id") String userId, @RequestParam("egg-id") String eggId){
         return incubatorService.removeEggFromIncubator(Integer.valueOf(userId), Integer.valueOf(eggId));
     }
 }

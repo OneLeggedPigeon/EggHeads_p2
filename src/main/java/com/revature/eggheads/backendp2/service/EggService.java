@@ -2,7 +2,10 @@ package com.revature.eggheads.backendp2.service;
 
 import com.revature.eggheads.backendp2.model.Egg;
 import com.revature.eggheads.backendp2.model.EggTemplate;
+import com.revature.eggheads.backendp2.repository.EggRepository;
+import com.revature.eggheads.backendp2.repository.UserRepository;
 import com.revature.eggheads.backendp2.util.RandomUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -19,6 +22,9 @@ public class EggService {
     private static final int RAND_MAX_DEV_PERCENTAGE = 20;
     private static final int RAND_SCALE_COLOR = 15;
     private static final int RAND_MAX_DEV_COLOR = 25;
+
+    @Autowired
+    EggRepository eggRepository;
 
     public Egg createEggFromTemplate(EggTemplate template){
 
@@ -38,11 +44,15 @@ public class EggService {
         int startingSize = RandomUtil.getRandomIntPercentage(0,RAND_SCALE_PERCENTAGE,RAND_MAX_DEV_PERCENTAGE);
         egg.setStartingSize(startingSize);
         egg.setCurrentSize(startingSize);
-        egg.setMaxSize(RandomUtil.getRandomIntPercentage(template.getSize(),RAND_SCALE_PERCENTAGE,RAND_MAX_DEV_PERCENTAGE));
+        egg.setMaxSize(Math.min(Math.max(RandomUtil.getRandomIntPercentage(template.getSize(),RAND_SCALE_PERCENTAGE,RAND_MAX_DEV_PERCENTAGE),startingSize+10),100));
         egg.setRedValue(RandomUtil.getRandomIntColor(template.getRedValue(),RAND_SCALE_PERCENTAGE,RAND_MAX_DEV_PERCENTAGE));
         egg.setGreenValue(RandomUtil.getRandomIntColor(template.getGreenValue(),RAND_SCALE_COLOR,RAND_MAX_DEV_COLOR));
         egg.setBlueValue(RandomUtil.getRandomIntColor(template.getBlueValue(),RAND_SCALE_COLOR,RAND_MAX_DEV_COLOR));
 
         return egg;
+    }
+
+    public Egg getEggById(Integer id) {
+        return eggRepository.findById(id).orElse(null);
     }
 }
