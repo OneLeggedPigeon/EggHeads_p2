@@ -6,7 +6,7 @@ import { User } from '../models/User';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'skip': 'true'
   })
 }
 @Injectable({
