@@ -1,1 +1,14 @@
-<p>incubator-dashboard works!</p>
+<mat-grid-tile-header class="dashboard-header">Incubator</mat-grid-tile-header>
+<div class='dashboard-body'>
+    <div class='incubator-preview'>
+        <div *ngFor='let egg of eggs' class='egg-preview'>
+            <app-egg [egg]='egg'></app-egg>
+        </div>
+        <h1 *ngIf='!eggs.length && loaded'>You have no eggs :(</h1>
+    </div>
+    <div class='hatching-preview'>
+        <h1>Hatching Status:</h1>
+        <h2 *ngIf='!hatchableEggs'>No Eggs are ready to hatch at this time.</h2>
+        <h2 *ngFor='let egg of hatchableEggs'>Egg {{egg.id}} is ready to hatch!</h2>
+    </div>
+</div>
