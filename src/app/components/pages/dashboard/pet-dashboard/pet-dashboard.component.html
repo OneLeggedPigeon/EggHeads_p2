@@ -1,1 +1,23 @@
-<p>pet-dashboard works!</p>
+
+<div style="display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;">
+    <div style ="margin-left: 10px; font-size: 20px;" *ngIf='!pets.length'> You don't have any pet, but you can always hatch some eggs with our app!
+        <br>
+            <img alt="sad dog" src="https://lrwonline.com/wp-content/uploads/2019/03/BLOG-Sad-Dog-1200x900-1200x900.jpg"
+            width="432" height="324" style=
+            "max-width:100%;
+            height:auto;">
+    </div>
+</div>
+<div >
+    <h1 style="margin-left: 10px; color: #6495ED;">Pets</h1>
+    <mat-card class="card-style" *ngFor="let pet of pets | slice:0:3">
+        <mat-card-header>
+            <mat-card-title>Name : {{pet.name | uppercase}}</mat-card-title>
+            <mat-card-subtitle>ID : {{pet.id}}</mat-card-subtitle>
+        </mat-card-header>
+
+    </mat-card>
+</div>
