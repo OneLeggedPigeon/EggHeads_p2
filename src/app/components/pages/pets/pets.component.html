@@ -37,9 +37,9 @@
     <div class="fright">
         <div  *ngIf="selectedPet">
 
-            <mat-list  style="background-color: #cc0066; max-width: 500px;">
+            <mat-list  style="background-color: #333333e7; max-width: 500px;">
                 
-                <mat-list-item class="mat-list-style" style="font-size: large;">{{selectedPet.name | uppercase}} the {{selectedPet.petAdjective | titlecase}} {{selectedPet.animalType | titlecase}}</mat-list-item>
+                <mat-list-item class="mat-list-style" style="font-size: large; color:#cc0066 ;">{{selectedPet.name | uppercase}} the {{selectedPet.petAdjective | titlecase}} {{selectedPet.animalType | titlecase}}</mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item class="mat-list-style">Name: {{selectedPet.name}}</mat-list-item>
                 <mat-divider></mat-divider>
