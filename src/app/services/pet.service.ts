@@ -14,11 +14,6 @@ export class PetService {
 
   storage:Storage = localStorage;
 
-  private headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-    ,'Authorization': `Bearer ${this.storage.getItem("token")}`
-  })
-
   dev:string = 'http://localhost:9000';
   cors:string = 'https://cors.io/?'
   prod:string = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/pet';
@@ -32,9 +27,7 @@ export class PetService {
   getPets(): Observable<Pet[]> {
     let id = localStorage.getItem("user-id");
     const url = `${this.prod}/${id}`;
-    return this.http.get<Pet[]>(url,{
-        headers: this.headers
-      }).pipe(
+    return this.http.get<Pet[]>(url).pipe(
         tap(_ => this.log(`fetched Pets`)),
         catchError(this.handleError<Pet[]>(`getPets`, []))
       );
@@ -46,9 +39,7 @@ export class PetService {
     const params = new HttpParams()
       .set("pet-id", petId.toString());
     const url = `${this.prod}/${id}?${params.toString()}`;
-    return this.http.get<Pet>(url,{
-        headers: this.headers
-      }).pipe(
+    return this.http.get<Pet>(url).pipe(
         tap(_ => this.log(`fetched Pet id=${petId}`)),
         catchError(this.handleError<Pet>(`getPet`))
       );
@@ -62,7 +53,7 @@ export class PetService {
       .set("name", name);
     const url = `${this.prod}/${id}?${params.toString()}`;
     return this.http.post<Pet>(url,{
-        headers: this.headers,
+
       }).pipe(
       tap(_ => this.log(`added Pet ${name} to User id=${id} using Egg id=${egg.id!.toString()}`)),
       catchError(this.handleError<Pet>(`addPetFromEgg`))
@@ -75,9 +66,7 @@ export class PetService {
     const params = new HttpParams()
       .set("pet-id", petId.toString());
     const url = `${this.prod}/${id}?${params.toString()}`;
-    return this.http.delete<Pet>(url,{
-        headers: this.headers
-      }).pipe(
+    return this.http.delete<Pet>(url).pipe(
         tap(_ => this.log(`fetched Pet id=${petId}`)),
         catchError(this.handleError<Pet>(`getPet`))
       );
