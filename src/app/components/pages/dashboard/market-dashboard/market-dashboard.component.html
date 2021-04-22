@@ -1,1 +1,8 @@
-<p>market-dashboard works!</p>
+<mat-grid-tile-header class="dashboard-header">Egg Market</mat-grid-tile-header>
+<div class='dashboard-body'>
+    <div class='market-preview'>
+        <div *ngFor='let egg of eggs' class='egg-preview'>
+            <app-egg [egg]='egg'></app-egg>
+        </div>
+    </div>
+</div>

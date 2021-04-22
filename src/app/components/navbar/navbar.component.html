@@ -1,43 +1,43 @@
 <p>
   <mat-toolbar>
-   <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/dashboard">
-      <mat-icon>home</mat-icon>
-      <span>Dashboard</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
     </button>
-    <mat-divider></mat-divider>
-    <button mat-menu-item routerLink="/incubator">
-      <mat-icon>inbox</mat-icon>
-      <span>My Incubator</span>
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-menu-item routerLink="/pets">
-      <mat-icon>pets</mat-icon>
-      <span>My Pets</span>
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-menu-item routerLink="/market">
-      <mat-icon>store</mat-icon>
-      <span>Egg Market</span>
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-menu-item routerLink="/templates">
-      <mat-icon>add</mat-icon>
-      <span>Create A Template</span>
-    </button>
-  </mat-menu>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/dashboard">
+        <mat-icon>home</mat-icon>
+        <span>Dashboard</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/incubator">
+        <mat-icon>inbox</mat-icon>
+        <span>My Incubator</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/pets">
+        <mat-icon>pets</mat-icon>
+        <span>My Pets</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/market">
+        <mat-icon>store</mat-icon>
+        <span>Egg Market</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/templates">
+        <mat-icon>add</mat-icon>
+        <span>Create A Template</span>
+      </button>
+    </mat-menu>
 
-  <span>Eggheads</span>
-  <span class="example-spacer"></span>
+    <span>Eggheads</span>
+    <span class="example-spacer"></span>
 
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" onclick="location.href='https://github.com/OneLeggedPigeon/EggHeads_p2'">
-   <mat-icon>share</mat-icon>
- </button>
- <button mat-icon-button class="favorite-icon" aria-label="Example icon-button with heart icon" (click)="logout()">
-    <mat-icon>logout</mat-icon>
-  </button>
-</mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" onclick="location.href='https://github.com/OneLeggedPigeon/EggHeads_p2'">
+      <mat-icon title='Github'>share</mat-icon>
+    </button>
+    <button mat-icon-button class="favorite-icon" aria-label="Example icon-button with heart icon" (click)="logout()">
+      <mat-icon title='Logout'>logout</mat-icon>
+    </button>
+  </mat-toolbar>
 </p>

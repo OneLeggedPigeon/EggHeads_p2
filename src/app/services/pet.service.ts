@@ -14,9 +14,10 @@ export class PetService {
 
   storage:Storage = localStorage;
 
+  private prod:string = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/pet';
+
   dev:string = 'http://localhost:9000';
   cors:string = 'https://cors.io/?'
-  prod:string = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/pet';
 
   constructor(
     private http:HttpClient,
