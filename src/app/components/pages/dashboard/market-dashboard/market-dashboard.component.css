@@ -1,1 +1,36 @@
 
+.dashboard-header {
+  height: 10%;
+}
+.dashboard-body {
+  position: absolute;
+  text-align: center;
+
+  bottom: -12.5%;
+  /* mess with this to align ^ */
+  left: 0%;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+  height:90%;
+  width: 100%;
+}
+.incubator-preview {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0;
+  width: 50%;
+  height: 100%;
+}
+.egg-preview {
+  float: left;
+  position: center;
+  margin: 1.3%;
+  margin-left: 1.3%;
+  margin-right: 0;
+  border: 0;
+  padding: 0;
+  width: 30%;
+  height: 30%;
+  background-color: pink;
+}
