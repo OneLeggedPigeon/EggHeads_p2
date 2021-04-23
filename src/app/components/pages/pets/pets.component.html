@@ -7,14 +7,14 @@
             width="540" height="405">
          </a>
         </div>
-    <div style = "margin-left: 10px" *ngIf='pets.length'>
+    <div style = "margin-left: 10px; color: var(--text-color-title)" *ngIf='pets.length'>
         <h2>My Pets</h2>
     </div>
 
     <div class="fleft">
         <mat-card class="card-style" *ngFor="let pet of pets">
             <mat-card-header>
-                <mat-card-title>Name : {{pet.name | uppercase}}</mat-card-title>
+                <mat-card-title>{{pet.name | uppercase}}</mat-card-title>
                 <mat-card-subtitle>ID : {{pet.id}}</mat-card-subtitle>
             </mat-card-header>
 
@@ -28,31 +28,25 @@
                 <button class="button-style"
                 mat-button [class.selected]="pet === selectedPet"
                 (click)="toConfirm(pet)"
-                mat-raised-button color="primary"
-                style='background-color: #000000;'>
+                mat-raised-button color="warn">
                 Abandon</button>
             </mat-card-actions>
         </mat-card>
     </div>
-    <div class="fright">
-        <div  *ngIf="selectedPet">
-
-            <mat-list  style="background-color: #333333e7; max-width: 500px;">
-                
-                <mat-list-item class="mat-list-style" style="font-size: large; color:#cc0066 ;">{{selectedPet.name | uppercase}} the {{selectedPet.petAdjective | titlecase}} {{selectedPet.animalType | titlecase}}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item class="mat-list-style">Name: {{selectedPet.name}}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item class="mat-list-style">ID: {{selectedPet.id}}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item class="mat-list-style">Species: {{selectedPet.animalType | titlecase}}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item class="mat-list-style">Temperment: {{selectedPet.petAdjective | titlecase}}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item class="mat-list-style">Owner: {{owner}}</mat-list-item>
-                <mat-divider></mat-divider>
-
-            </mat-list>
-        </div>
+    <div class="fright" *ngIf="selectedPet">
+        <mat-list>
+            <mat-list-item style="font-size: large; color:var(--text-color-header) ;">{{selectedPet.name}} the {{selectedPet.petAdjective | titlecase}} {{selectedPet.animalType | titlecase}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Name: {{selectedPet.name}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>ID: {{selectedPet.id}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Species: {{selectedPet.animalType | titlecase}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Temperment: {{selectedPet.petAdjective | titlecase}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Owner: {{owner}}</mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
     </div>
 </div>
