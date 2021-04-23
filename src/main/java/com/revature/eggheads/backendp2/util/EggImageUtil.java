@@ -54,7 +54,7 @@ public final class EggImageUtil {
         BufferedImage bi = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = bi.createGraphics();
         // create background
-        g.setColor(Color.LIGHT_GRAY);
+        g.setColor(new Color(51, 51, 51, 231));
         g.fillRect(0, 0, imgWidth, imgHeight);
 
         int bothX = (maxWidth - arcWidth) / 2 + MARGIN;

@@ -81,7 +81,12 @@ public class AdjectiveUtil {
                 "amicable",
                 "pithy",
                 "introspective",
-                "ready for anything"
+                "ready for anything",
+                "corpulent",
+                "ignoble",
+                "contrite",
+                "fragile",
+                "indignant"
         ); // I may have had too much fun with this
         return RandomUtil.getRandomString(adjectives);
     }
