@@ -3,5 +3,5 @@
 }
 
 .contributor mat-card{
-  background-color: #2b2b2b5e;
+  background-color: var(--background-color);
 }
