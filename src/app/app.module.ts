@@ -9,7 +9,7 @@ import { AngularMaterialModule } from './angular-material.module'
 import { LoginComponent } from './components/forms/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TemplatesComponent } from './components/pages/templates/templates.component';
@@ -28,6 +28,7 @@ import { IncubatorDashboardComponent } from './components/pages/dashboard/incuba
 import { PetDashboardComponent } from './components/pages/dashboard/pet-dashboard/pet-dashboard.component';
 import { MarketDashboardComponent } from './components/pages/dashboard/market-dashboard/market-dashboard.component';
 import { TemplateDashboardComponent } from './components/pages/dashboard/template-dashboard/template-dashboard.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 
 @NgModule({
@@ -62,7 +63,12 @@ import { TemplateDashboardComponent } from './components/pages/dashboard/templat
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

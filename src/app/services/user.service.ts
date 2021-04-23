@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { User } from '../models/User';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'skip': 'true'
   })
 }
 @Injectable({
@@ -26,31 +27,39 @@ export class UserService {
   }
 
   loginUser(user:User){
-    let response = this.http.post<any>(this.loginUrl, user, httpOptions);
-    response.subscribe(res => {
+    let response = this.http.post<any>(this.loginUrl, user, httpOptions)
+
+    .pipe(
+      catchError(err => {
+        alert("Could Not Authorize Your Credentials.");
+        return throwError(err);
+      })
+    )
+
+    .subscribe(res => {
       if(res.jwt){
         this.storage.setItem("token",res.jwt);
         this.storage.setItem("username", user.username);
         this.storage.setItem("user-id",res.userId);
         this.router.navigate(['/dashboard']);
-      }
-      else{
-        //invalid credentials popup
       }
     })
   }
 
   registerUser(user:User){
-    let response = this.http.post<any>(this.registerUrl, user, httpOptions);
-    response.subscribe(res => {
-      if(res.jwt){
-        this.storage.setItem("token",res.jwt);
-        this.storage.setItem("username", user.username);
-        this.storage.setItem("user-id",res.userId);
-        this.router.navigate(['/dashboard']);
-      }
-      else{
-        //invalid credentials popup
+    let response = this.http.post<any>(this.registerUrl, user, httpOptions)
+
+    .pipe(
+      catchError(err => {
+        alert("User Already Exists");
+        return throwError(err);
+      })
+    )
+
+
+    .subscribe(res => {
+      if(res.username){
+        this.loginUser(user);
       }
     })
   }

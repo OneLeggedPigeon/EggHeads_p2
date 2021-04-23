@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -13,11 +13,6 @@ import { MessageService } from './message.service';
 export class IncubatorService {
 
   private incubatorUrl = 'http://eggheadp2-backend.eba-sq2v6sgu.us-east-2.elasticbeanstalk.com/incubator';
-  
-  private headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem("token")}`
-  });
 
   constructor(
     private http: HttpClient,
@@ -28,9 +23,7 @@ export class IncubatorService {
   getIncubator(): Observable<Incubator> {
     let id = localStorage.getItem("user-id");
     const url = `${this.incubatorUrl}/${id}`;
-    return this.http.get<Incubator>(url,{
-        headers: this.headers
-      }).pipe(
+    return this.http.get<Incubator>(url).pipe(
       tap(_ => this.log(`fetched Incubator id=${id}`)),
       catchError(this.handleError<Incubator>(`getIncubator`))
     );
@@ -40,9 +33,7 @@ export class IncubatorService {
   addEggToIncubator(egg: Egg): Observable<Incubator> {
     let id = localStorage.getItem("user-id");
     const url = `${this.incubatorUrl}/${id}`;
-    return this.http.post<Incubator>(url, egg, {
-        headers: this.headers
-      }).pipe(
+    return this.http.post<Incubator>(url, egg).pipe(
       tap(_ => this.log(`added Egg to Incubator ${id}`)),
       catchError(this.handleError<Incubator>('addEggToIncubator'))
     );
@@ -53,10 +44,7 @@ export class IncubatorService {
     let id = localStorage.getItem("user-id");
     let eggId:string = egg.id!.toString();
     const url = `${this.incubatorUrl}/${id}`;
-    return this.http.delete<Incubator>(url, {
-        headers: this.headers,
-        params: new HttpParams().append("eggId",eggId)
-      }).pipe(
+    return this.http.delete<Incubator>(url).pipe(
       tap(_ => this.log(`deleted Egg from Incubator ${id}`)),
       catchError(this.handleError<Incubator>('deleteEggFromIncubator'))
     );

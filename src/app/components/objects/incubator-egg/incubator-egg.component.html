@@ -6,11 +6,11 @@
     <app-egg [size]='egg.currentSize' [red]='egg.redValue' [green]='egg.greenValue' [blue]='egg.blueValue'></app-egg>
     <mat-grid-tile-footer *ngIf='egg.ready'>
         <div>
-            <button *ngIf='name' (click)='hatch()'>Hatch!</button>
+            <label class='hatch' for="pet-name">Give your pet a name: </label>
+            <input id="pet-name" [(ngModel)]="name" placeholder="Pet Name" (keyup.enter)='hatch()'>
         </div>
         <div>
-            <label class='hatch' for="pet-name">Give your pet a name: </label>
-            <input id="pet-name" [(ngModel)]="name" placeholder="Pet Name">
+            <button *ngIf='name' (click)='hatch()'>Hatch!</button>
         </div>
         <div *ngIf='hatchError'>
             <p color='red'>Something went wrong</p>

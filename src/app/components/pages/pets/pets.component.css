@@ -28,6 +28,11 @@
     width: 60%;
 }
     
-.mat-list-style{
-    color:white;
+.mat-list-item{
+    color:var(--text-color-body);
+}
+
+.mat-list {
+    background-color: var(--background-color);
+    max-width: 500px;
 }

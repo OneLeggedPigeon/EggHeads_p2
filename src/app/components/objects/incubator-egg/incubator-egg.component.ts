@@ -30,7 +30,7 @@ export class IncubatorEggComponent implements OnInit {
 
   hatch(): void {
     // incase they spam click while it's loading
-    if(!this.clickedHatch){
+    if(!this.clickedHatch && this.name){
       this.clickedHatch = true;
       this.messageService.add(`hatching Egg ${this.egg.id} with name ${this.name}`);
       // no need to call delete, that happens automatically in the backend when you add the pet successfully
