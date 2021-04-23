@@ -1,5 +1,6 @@
 .centered-page-wrapper {
-    background:#333333e7;
-    color: #fff;
+    background:var(--background-color);
+    color: var(--text-color-header);
+    padding: 10px;
     border-radius: 10px;
 }
