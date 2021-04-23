@@ -1,6 +1,8 @@
 import { PetService } from './../../../services/pet.service';
 import { Component, OnInit } from '@angular/core';
 import { Pet } from 'src/app/models/Pet';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-pets',
@@ -9,6 +11,7 @@ import { Pet } from 'src/app/models/Pet';
 })
 export class PetsComponent implements OnInit {
   pets: Pet[] = [];
+  pageSlice : Pet[] = [];
   selectedPet? : Pet;
   abandonedPet? : Pet;
   petRemoved : boolean = false;
@@ -20,8 +23,10 @@ export class PetsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+ 
     this.petService.getPets().subscribe(pets => {
       this.pets = pets;
+      this.pageSlice = this.pets.slice(0, 3);
     });
   }
 
@@ -60,5 +65,14 @@ export class PetsComponent implements OnInit {
   yeeted(name: String) {
     alert(
     `${name} has been yeeted, hope you said goodbye :(`);
+  }
+
+  onPageChange(event: PageEvent){
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > this.pets.length) {
+      endIndex = this.pets.length;
+    }
+    this.pageSlice = this.pets.slice(startIndex, endIndex);
   }
 }

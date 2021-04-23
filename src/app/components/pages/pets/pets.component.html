@@ -1,4 +1,11 @@
 <div class="centered-page-wrapper">
+    <mat-paginator      [length]="this.pets.length"
+                        [pageSize]="3"
+                        [pageSizeOptions]="[3, 5, 10, 15]"
+                        [pageIndex] ="0"
+                        (page)="onPageChange($event)"
+                        style="position: absolute; bottom: 50px;width: 30%; ">
+    </mat-paginator>
     <div style ="margin-left: 10px; font-size: 20px;" *ngIf='!pets.length'> You don't have any pets, but you can always hatch some eggs with our app!
         <br>
         <p>Click on this sad doge to visit r/aww </p>
@@ -12,7 +19,7 @@
     </div>
 
     <div class="fleft">
-        <mat-card class="card-style" *ngFor="let pet of pets">
+        <mat-card class="card-style" *ngFor="let pet of pageSlice">
             <mat-card-header>
                 <mat-card-title>{{pet.name | uppercase}}</mat-card-title>
                 <mat-card-subtitle>ID : {{pet.id}}</mat-card-subtitle>
@@ -32,6 +39,7 @@
                 Abandon</button>
             </mat-card-actions>
         </mat-card>
+        
     </div>
     <div class="fright" *ngIf="selectedPet">
         <mat-list>
@@ -49,4 +57,5 @@
             <mat-divider></mat-divider>
         </mat-list>
     </div>
+    
 </div>
