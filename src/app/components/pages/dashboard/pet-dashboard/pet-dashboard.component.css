@@ -1,11 +1,27 @@
+.dashboard-header {
+  height: 10%;
+}
+
+.dashboard-body {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  height:90%;
+  width: 100%;
+  overflow: auto;
+}
+
 .card-style {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left:auto;
-    margin-right:auto;
-    width: 80%;
-    height:30%;
-    margin-bottom: 5px;
-    color: #6495ED;
-    position: relative;
-  }
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left:auto;
+  margin-right:auto;
+  width: 80%;
+  height:30%;
+  margin-bottom: 5px;
+  color: #6495ED;
+  position: relative;
+}

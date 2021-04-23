@@ -10,11 +10,7 @@ import { PetService } from 'src/app/services/pet.service';
 })
 export class PetDashboardComponent implements OnInit {
   pets: Pet[] = [];
-  selectedPet? : Pet;
-  abandonedPet? : Pet;
-  petRemoved : boolean = false;
-  storage:Storage = localStorage;
-  owner?: string;
+  loaded: boolean = false;
 
   constructor(
     private petService:PetService
@@ -23,6 +19,7 @@ export class PetDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.petService.getPets().subscribe(pets => {
       this.pets = pets;
+      this.loaded = true;
     });
   }
 }
