@@ -1,0 +1,53 @@
+.card-style {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .positronx {
+    text-decoration: none;
+  }
+  
+  .card-style .example-form {
+    min-width: 100%;
+    max-width: 300px;
+    width: 100%;
+  }
+  
+  .card-style .example-full-width {
+    width: 100%;
+  }
+  
+  .card-style .btn-block {
+    font-size: 20px;
+    font-weight: 500;
+    width: 100%;
+    top: 10 px;
+    bottom: 10px;
+  }
+  
+  .card-style mat-card-header {
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-weight: 700;
+  }
+  
+  .card-style mat-card-header mat-card-title {
+    font-size: 20px;
+    margin: 10;
+  }
+
+  .card-style mat-card-content {
+    font-size: 15px;
+    margin: 20;
+    font-weight: 300;
+  }
+  
+  .card-style .mat-card {
+    padding: 30px 30px 30px;
+  }
+  
+  .card-style .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.8375em 0;
+  }
