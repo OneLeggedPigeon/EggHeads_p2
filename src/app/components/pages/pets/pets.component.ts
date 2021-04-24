@@ -26,7 +26,7 @@ export class PetsComponent implements OnInit {
  
     this.petService.getPets().subscribe(pets => {
       this.pets = pets;
-      this.pageSlice = this.pets.slice(0, 3);
+      this.pageSlice = this.pets.slice(0, 5);
     });
   }
 
