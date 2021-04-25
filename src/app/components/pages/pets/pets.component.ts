@@ -17,6 +17,7 @@ export class PetsComponent implements OnInit {
   petRemoved : boolean = false;
   storage:Storage = localStorage;
   owner?: string;
+  loaded:boolean = false;
 
   constructor(
     private petService:PetService
@@ -27,6 +28,7 @@ export class PetsComponent implements OnInit {
     this.petService.getPets().subscribe(pets => {
       this.pets = pets;
       this.pageSlice = this.pets.slice(0, 5);
+      this.loaded = true;
     });
   }
 
