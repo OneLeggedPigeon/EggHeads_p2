@@ -1,7 +1,6 @@
 .hatch {
-    color: black;
-    background-color:darkgoldenrod;
-    font-weight: bold;
+    color: var(--text-color-body);
+    background-color:var(--text-color-pain);
     margin: 5px;
     padding: .3em;
     border-radius: 4px;

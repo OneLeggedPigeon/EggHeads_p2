@@ -10,7 +10,7 @@
             <input id="pet-name" [(ngModel)]="name" placeholder="Pet Name" (keyup.enter)='hatch()'>
         </div>
         <div>
-            <button *ngIf='name' (click)='hatch()'>Hatch!</button>
+            <button *ngIf='name' (click)='hatch()' mat-raised-button color="primary">Hatch!</button>
         </div>
         <div *ngIf='hatchError'>
             <p color='red'>Something went wrong</p>
