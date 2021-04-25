@@ -1,41 +1,37 @@
 <p>
-  <mat-toolbar>
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon">
+  <mat-toolbar fxLayout="row">
+    <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.sm fxShow.xs>
       <mat-icon>menu</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/dashboard">
-        <mat-icon>home</mat-icon>
-        <span>Dashboard</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item routerLink="/incubator">
-        <mat-icon>inbox</mat-icon>
-        <span>My Incubator</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item routerLink="/pets">
-        <mat-icon>pets</mat-icon>
-        <span>My Pets</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item routerLink="/market">
-        <mat-icon>store</mat-icon>
-        <span>Egg Market</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item routerLink="/templates">
-        <mat-icon>add</mat-icon>
-        <span>Create A Template</span>
-      </button>
-    </mat-menu>
-
     <span>Eggheads</span>
-    <span class="example-spacer"></span>
+    <span class="example-spacer2"></span>
+    <mat-divider vertical style="height:50px" fxHide.sm fxHide.xs></mat-divider>
+      <button mat-button *ngFor="let item of menuItems" routerLink={{item.route}} fxHide.sm fxHide.xs>
+        <mat-icon>{{item.icon}}</mat-icon>
+        <span> {{item.label}}</span>
+      </button>
+    <mat-divider vertical style="height:25px" fxHide.sm fxHide.xs></mat-divider>
 
+
+    <mat-menu #dropMenu="matMenu">
+      <ng-container *ngFor="let item of menuItems">
+          <button mat-menu-item>
+              <mat-icon class="mr">{{item.icon}}</mat-icon>
+              {{item.label}}
+          </button>
+          <mat-divider></mat-divider>
+      </ng-container>
+  </mat-menu>
+
+
+    <span class="example-spacer"></span>
+    <span>Hello, {{username}}</span>
+    <span class="example-spacer2"></span>
+    <mat-divider vertical style="height:25px"></mat-divider>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" onclick="location.href='https://github.com/OneLeggedPigeon/EggHeads_p2'">
       <mat-icon title='Github'>share</mat-icon>
     </button>
+    <mat-divider vertical style="height:25px"></mat-divider>
     <button mat-icon-button class="favorite-icon" aria-label="Example icon-button with heart icon" (click)="logout()">
       <mat-icon title='Logout'>logout</mat-icon>
     </button>
