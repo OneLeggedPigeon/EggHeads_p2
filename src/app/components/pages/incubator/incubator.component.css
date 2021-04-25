@@ -1,6 +1,6 @@
 .centered-page-wrapper {
-    background:var(--background-color);
-    color: var(--text-color-header);
+    /* background:var(--background-color);
+    color: var(--text-color-header); */
     padding: 10px;
     border-radius: 10px;
 }

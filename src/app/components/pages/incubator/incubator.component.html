@@ -1,4 +1,5 @@
 <div class='centered-page-wrapper'>
+    <h1>My Eggs</h1>
     <div *ngIf='!eggs.length && loaded'>You have no eggs :(</div>
     <mat-grid-list cols="3" rowHeight="1:1" gutterSize="10px">
         <mat-grid-tile *ngFor='let egg of eggs'>
