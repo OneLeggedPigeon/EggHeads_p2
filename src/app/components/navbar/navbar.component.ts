@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
     {
       route: '/templates',
       icon: 'add',
-      label: 'Create A Template'
+      label: 'Create New Template'
     }
   ]
 

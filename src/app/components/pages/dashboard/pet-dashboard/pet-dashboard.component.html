@@ -1,8 +1,8 @@
 <mat-grid-tile-header class="dashboard-header">My Pets</mat-grid-tile-header>
 <div class='dashboard-body' *ngIf='loaded'>
-    <div *ngIf='!pets.length'>
-        You have no pets.
-    </div>
+    <h1 *ngIf='!pets.length' style="text-align: center;">
+        You have no pets :(
+    </h1>
     <div *ngIf='pets.length'>
         <mat-card class="card-style" *ngFor="let pet of pets">
             <mat-card-header>
