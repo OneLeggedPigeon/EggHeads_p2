@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EggTemplateComponent } from './egg_template.component';
@@ -8,7 +9,8 @@ describe('EggTemplateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EggTemplateComponent ]
+      declarations: [ EggTemplateComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });

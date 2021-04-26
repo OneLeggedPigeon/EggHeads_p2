@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PetDashboardComponent } from './pet-dashboard.component';
@@ -8,7 +9,8 @@ describe('PetDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PetDashboardComponent ]
+      declarations: [ PetDashboardComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });

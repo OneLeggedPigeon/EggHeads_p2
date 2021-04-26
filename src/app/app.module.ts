@@ -29,7 +29,7 @@ import { PetDashboardComponent } from './components/pages/dashboard/pet-dashboar
 import { MarketDashboardComponent } from './components/pages/dashboard/market-dashboard/market-dashboard.component';
 import { TemplateDashboardComponent } from './components/pages/dashboard/template-dashboard/template-dashboard.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientTestingModule,
   ],
   providers: [UserService,
     {

@@ -1,13 +1,16 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { EggService } from './egg.service';
+import { EggTemplateService } from './egg-template.service';
 
-describe('EggService', () => {
-  let service: EggService;
+describe('EggTemplate', () => {
+  let service: EggTemplateService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(EggService);
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
+    service = TestBed.inject(EggTemplateService);
   });
 
   it('should be created', () => {

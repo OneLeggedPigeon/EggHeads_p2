@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IncubatorComponent } from './incubator.component';
@@ -8,7 +9,8 @@ describe('IncubatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IncubatorComponent ]
+      declarations: [ IncubatorComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });
