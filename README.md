@@ -36,6 +36,9 @@ then switch to the orphaned frontend or backend branch, depending on which you w
 ## Contributors
 
 > Nathaniel Ford
+
 > Anakin Kung
+
 > Tristan Panke
+
 > Brandon Pinkerton
